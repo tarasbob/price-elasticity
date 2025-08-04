@@ -2673,5 +2673,1990 @@
     "good": "Angle grinders",
     "demandElasticity": -0.9,
     "supplyElasticity": 1.5
+  },
+  {
+    "good": "Olive oil",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Coconut oil",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Avocado oil",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Vinegar",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Soy sauce",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Hot sauce",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Maple syrup",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Honey",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Jam and preserves",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Peanut butter",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Almond butter",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Cereal",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Oatmeal",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Pasta",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Noodles",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Flour",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Baking powder",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Yeast",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Chocolate chips",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Candy",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Chocolate bars",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Chewing gum",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Breath mints",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 3.5
+  },
+  {
+    "good": "Nuts (almonds)",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Cashews",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Pistachios",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Frozen vegetables",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Frozen fruit",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Frozen pizza",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Frozen dinners",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Canned soup",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Canned beans",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Canned fruit",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Crackers",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Chips",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Pretzels",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.3
+  },
+  {
+    "good": "Popcorn",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.8
+  },
+  {
+    "good": "Trail mix",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Granola bars",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Fruit snacks",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Beef jerky",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Salami",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Bacon",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Sausages",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Ham",
+    "demandElasticity": -0.85,
+    "supplyElasticity": 0.95
+  },
+  {
+    "good": "Turkey (deli)",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Tofu",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Tempeh",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Seitan",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Quinoa",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Couscous",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Bulgur",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Barley",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Lentils",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Chickpeas",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Black beans",
+    "demandElasticity": -0.55,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Kidney beans",
+    "demandElasticity": -0.58,
+    "supplyElasticity": 1.05
+  },
+  {
+    "good": "Spinach",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Kale",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Broccoli",
+    "demandElasticity": -0.75,
+    "supplyElasticity": 0.55
+  },
+  {
+    "good": "Cauliflower",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Carrots",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 0.7
+  },
+  {
+    "good": "Celery",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Bell peppers",
+    "demandElasticity": -0.85,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Cucumbers",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.55
+  },
+  {
+    "good": "Zucchini",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Eggplant",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Mushrooms",
+    "demandElasticity": -0.95,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Asparagus",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Brussels sprouts",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Corn",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 0.7
+  },
+  {
+    "good": "Green beans",
+    "demandElasticity": -0.65,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Peas",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.65
+  },
+  {
+    "good": "Garlic",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Ginger",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.7
+  },
+  {
+    "good": "Lemons",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Limes",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.35
+  },
+  {
+    "good": "Grapefruit",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Pears",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.35
+  },
+  {
+    "good": "Peaches",
+    "demandElasticity": -1.15,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Plums",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.32
+  },
+  {
+    "good": "Cherries",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 0.25
+  },
+  {
+    "good": "Strawberries",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Blueberries",
+    "demandElasticity": -1.35,
+    "supplyElasticity": 0.28
+  },
+  {
+    "good": "Raspberries",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 0.25
+  },
+  {
+    "good": "Blackberries",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 0.26
+  },
+  {
+    "good": "Grapes",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.35
+  },
+  {
+    "good": "Watermelon",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Cantaloupe",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.38
+  },
+  {
+    "good": "Honeydew",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 0.36
+  },
+  {
+    "good": "Pineapple",
+    "demandElasticity": -1.05,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Mango",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.28
+  },
+  {
+    "good": "Papaya",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 0.25
+  },
+  {
+    "good": "Kiwi",
+    "demandElasticity": -1.25,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Pomegranate",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 0.22
+  },
+  {
+    "good": "Coconut",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.35
+  },
+  {
+    "good": "Dates",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Figs",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 0.25
+  },
+  {
+    "good": "Raisins",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Dried cranberries",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Applesauce",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Fruit juice (orange)",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Apple juice",
+    "demandElasticity": -0.95,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Grape juice",
+    "demandElasticity": -1.05,
+    "supplyElasticity": 0.95
+  },
+  {
+    "good": "Cranberry juice",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Vegetable juice",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Sports drinks",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Lemonade",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Iced tea",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Herbal tea",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Green tea",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Black tea",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Decaf coffee",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Instant coffee",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Coffee pods",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Coffee beans",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Ground coffee",
+    "demandElasticity": -0.75,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Hot chocolate mix",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Marshmallows",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.8
+  },
+  {
+    "good": "Whipped cream",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Half and half",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Heavy cream",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.7
+  },
+  {
+    "good": "Sour cream",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Cream cheese",
+    "demandElasticity": -0.85,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Cottage cheese",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Ricotta cheese",
+    "demandElasticity": -0.95,
+    "supplyElasticity": 0.7
+  },
+  {
+    "good": "Mozzarella cheese",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Cheddar cheese",
+    "demandElasticity": -0.75,
+    "supplyElasticity": 0.85
+  },
+  {
+    "good": "Swiss cheese",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.75
+  },
+  {
+    "good": "Parmesan cheese",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Blue cheese",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Goat cheese",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 0.45
+  },
+  {
+    "good": "Feta cheese",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 0.55
+  },
+  {
+    "good": "Brie cheese",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Camembert cheese",
+    "demandElasticity": -1.6,
+    "supplyElasticity": 0.35
+  },
+  {
+    "good": "Gouda cheese",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Provolone cheese",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.65
+  },
+  {
+    "good": "String cheese",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Cheese slices",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Shredded cheese",
+    "demandElasticity": -0.85,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Almond milk",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Soy milk",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Oat milk",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Coconut milk",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Rice milk",
+    "demandElasticity": -1.15,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Cashew milk",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Hemp milk",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Lactose-free milk",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Chocolate milk",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Strawberry milk",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Buttermilk",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Kefir",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Greek yogurt",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Frozen yogurt",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Yogurt drinks",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Probiotic supplements",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Fish oil supplements",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Multivitamins",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Vitamin C",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 2.8
+  },
+  {
+    "good": "Vitamin D",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Calcium supplements",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 2.3
+  },
+  {
+    "good": "Iron supplements",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Magnesium supplements",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.4
+  },
+  {
+    "good": "Zinc supplements",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 2.6
+  },
+  {
+    "good": "Melatonin",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Collagen supplements",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Turmeric supplements",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Garlic supplements",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.4
+  },
+  {
+    "good": "Ginger supplements",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.3
+  },
+  {
+    "good": "Echinacea",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "St. John's Wort",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Valerian root",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.9
+  },
+  {
+    "good": "Ashwagandha",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.7
+  },
+  {
+    "good": "CBD oil",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Hemp products",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Chia seeds",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Flax seeds",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Hemp seeds",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Pumpkin seeds",
+    "demandElasticity": -0.95,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Sunflower seeds",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Sesame seeds",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Poppy seeds",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Mustard seeds",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Cumin seeds",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Coriander seeds",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.95
+  },
+  {
+    "good": "Cardamom",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Cinnamon",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.7
+  },
+  {
+    "good": "Nutmeg",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Cloves",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 0.55
+  },
+  {
+    "good": "Black pepper",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "White pepper",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.75
+  },
+  {
+    "good": "Cayenne pepper",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Paprika",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Chili powder",
+    "demandElasticity": -0.75,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Curry powder",
+    "demandElasticity": -0.85,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Turmeric powder",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.95
+  },
+  {
+    "good": "Garam masala",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Italian seasoning",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Herbs de Provence",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Bay leaves",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Oregano",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Basil",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Thyme",
+    "demandElasticity": -0.75,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Rosemary",
+    "demandElasticity": -0.85,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Sage",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.95
+  },
+  {
+    "good": "Parsley",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.7
+  },
+  {
+    "good": "Cilantro",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Dill",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.65
+  },
+  {
+    "good": "Tarragon",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 0.55
+  },
+  {
+    "good": "Mint",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Chives",
+    "demandElasticity": -0.85,
+    "supplyElasticity": 0.75
+  },
+  {
+    "good": "Vanilla extract",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Almond extract",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Lemon extract",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Food coloring",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Baking soda",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Cornstarch",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Gelatin",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Agar agar",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Pectin",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Xanthan gum",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Cream of tartar",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Molasses",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Corn syrup",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Agave nectar",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Stevia",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Artificial sweeteners",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Brown sugar",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Powdered sugar",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Raw sugar",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Coconut sugar",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.7
+  },
+  {
+    "good": "Date sugar",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Monk fruit sweetener",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Erythritol",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Xylitol",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Tahini",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Hummus",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Guacamole",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Salsa",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Pesto",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Mayonnaise",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Mustard",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Ketchup",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "BBQ sauce",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.9
+  },
+  {
+    "good": "Ranch dressing",
+    "demandElasticity": -0.85,
+    "supplyElasticity": 2.1
+  },
+  {
+    "good": "Italian dressing",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Balsamic vinegar",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Apple cider vinegar",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Rice vinegar",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Red wine vinegar",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "White wine vinegar",
+    "demandElasticity": -0.95,
+    "supplyElasticity": 0.95
+  },
+  {
+    "good": "Worcestershire sauce",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Fish sauce",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Oyster sauce",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Hoisin sauce",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Teriyaki sauce",
+    "demandElasticity": -0.85,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Sriracha",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Tabasco",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Chipotle sauce",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.7
+  },
+  {
+    "good": "Buffalo sauce",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.9
+  },
+  {
+    "good": "Tartar sauce",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Cocktail sauce",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Horseradish",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Wasabi",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Pickles",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Olives",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Capers",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 0.7
+  },
+  {
+    "good": "Sun-dried tomatoes",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Roasted peppers",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Artichoke hearts",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Hearts of palm",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Bamboo shoots",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Water chestnuts",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 0.7
+  },
+  {
+    "good": "Baby corn",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Kimchi",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Sauerkraut",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Miso paste",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Tempura batter",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Pancake mix",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Waffle mix",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.9
+  },
+  {
+    "good": "Muffin mix",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 2.1
+  },
+  {
+    "good": "Brownie mix",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Cookie mix",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.3
+  },
+  {
+    "good": "Cake mix",
+    "demandElasticity": -0.95,
+    "supplyElasticity": 2.15
+  },
+  {
+    "good": "Frosting",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.4
+  },
+  {
+    "good": "Pie crust",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Phyllo dough",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Puff pastry",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Pizza dough",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Tortillas",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Taco shells",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Breadcrumbs",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Croutons",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.1
+  },
+  {
+    "good": "Stuffing mix",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.9
+  },
+  {
+    "good": "Instant mashed potatoes",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 2.3
+  },
+  {
+    "good": "Instant noodles",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Ramen noodles",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 2.4
+  },
+  {
+    "good": "Mac and cheese (boxed)",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Microwave popcorn",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.6
+  },
+  {
+    "good": "Instant oatmeal",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 2.4
+  },
+  {
+    "good": "Breakfast bars",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.3
+  },
+  {
+    "good": "Pop tarts",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Bagels",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "English muffins",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Croissants",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Donuts",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Muffins",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.7
+  },
+  {
+    "good": "Scones",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Biscuits",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Cinnamon rolls",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Danish pastries",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Pie",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Cake",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Cupcakes",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Cookies",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Brownies",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Fudge",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 1.9
+  },
+  {
+    "good": "Pudding",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 2.1
+  },
+  {
+    "good": "Jello",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.3
+  },
+  {
+    "good": "Custard",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.7
+  },
+  {
+    "good": "Mousse",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Tiramisu",
+    "demandElasticity": -1.6,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Cheesecake",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Baklava",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Eclairs",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Cream puffs",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Macarons",
+    "demandElasticity": -1.8,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Cannoli",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Biscotti",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Fortune cookies",
+    "demandElasticity": -1.6,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Rice cakes",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Corn cakes",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.9
+  },
+  {
+    "good": "Graham crackers",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 2.1
+  },
+  {
+    "good": "Animal crackers",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.3
+  },
+  {
+    "good": "Saltines",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 2.4
+  },
+  {
+    "good": "Matzo",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Pita bread",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Naan bread",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Focaccia",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Ciabatta",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Baguette",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Sourdough bread",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Rye bread",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.95
+  },
+  {
+    "good": "Whole wheat bread",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "White bread",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Multigrain bread",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.05
+  },
+  {
+    "good": "Pumpernickel bread",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.85
+  },
+  {
+    "good": "Brioche",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Challah",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Cornbread",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Banana bread",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Zucchini bread",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Pumpkin bread",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Garlic bread",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Breadsticks",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Dinner rolls",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Hamburger buns",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.7
+  },
+  {
+    "good": "Hot dog buns",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Kaiser rolls",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Pretzel buns",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Flatbread",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Lavash",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Injera",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Chapati",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Roti",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Paratha",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Dosa",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.85
+  },
+  {
+    "good": "Idli",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Vada",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Samosa",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Spring rolls",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Egg rolls",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Dumplings",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Wontons",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Potstickers",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.15
+  },
+  {
+    "good": "Gyoza",
+    "demandElasticity": -1.05,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Dim sum",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Bao buns",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Empanadas",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Tamales",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Enchiladas",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Quesadillas",
+    "demandElasticity": -0.85,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Burritos",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Nachos",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Fajitas",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Churros",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Flan",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Tres leches cake",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Sopapillas",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Horchata",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Agua fresca",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Margarita mix",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Sangria",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Mojito mix",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Piña colada mix",
+    "demandElasticity": -1.6,
+    "supplyElasticity": 2.1
+  },
+  {
+    "good": "Bloody Mary mix",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.9
+  },
+  {
+    "good": "Daiquiri mix",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.3
   }
 ]

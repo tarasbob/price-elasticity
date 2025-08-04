@@ -70,7 +70,11 @@ const ElasticityExplanation = ({ onClose }: { onClose: () => void }) => {
                   <li>⛽ Gasoline: People need it to get to work</li>
                   <li>💊 Medicine: Health necessities</li>
                   <li>🥚 Basic foods: Essential for survival</li>
+                  <li>✈️ First-class travel: Status symbol (Veblen effect)</li>
                 </ul>
+                <p className="mt-3 text-xs text-orange-700 italic">
+                  Note: Low elasticity can be due to necessity OR Veblen effects (where high price increases desirability).
+                </p>
               </div>
               
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6">
@@ -428,15 +432,46 @@ export default function Home() {
                           </div>
                         </div>
 
-                        <div className="bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-2xl p-4 border border-indigo-400/20">
-                          <p className="text-gray-300 text-center">
+                        <div className="bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-2xl p-6 border border-indigo-400/20 space-y-3">
+                          <p className="text-gray-300 text-center font-semibold">
                             {Math.abs(currentGood.elasticity) < 0.5 ? 
-                              "This good is inelastic - people need it regardless of price!" :
+                              "This good is inelastic - demand changes little with price!" :
                               Math.abs(currentGood.elasticity) < 1 ?
                               "This good has moderate elasticity - some sensitivity to price changes." :
                               "This good is elastic - people are very sensitive to price changes!"
                             }
                           </p>
+                          
+                          {Math.abs(currentGood.elasticity) < 0.5 && (
+                            <div className="bg-white/5 rounded-xl p-4 text-sm text-gray-400">
+                              <p className="mb-2">
+                                <span className="font-semibold text-gray-200">Why is it inelastic?</span> Low elasticity typically occurs due to:
+                              </p>
+                              <ul className="space-y-2 ml-4">
+                                <li className="flex items-start">
+                                  <span className="text-blue-400 mr-2">•</span>
+                                  <div>
+                                    <span className="font-semibold text-gray-300">Necessity:</span> Essential goods that people need regardless of price (medicine, basic food, fuel)
+                                  </div>
+                                </li>
+                                <li className="flex items-start">
+                                  <span className="text-purple-400 mr-2">•</span>
+                                  <div>
+                                    <span className="font-semibold text-gray-300">Veblen Effects:</span> Luxury goods where higher prices actually increase desirability as status symbols (first-class travel, premium brands)
+                                  </div>
+                                </li>
+                              </ul>
+                              <p className="mt-3 text-xs text-gray-300 italic">
+                                This good's low elasticity could be due to either reason - it might be an essential necessity or a status symbol where price increases desirability.
+                              </p>
+                            </div>
+                          )}
+                          
+                          {Math.abs(currentGood.elasticity) >= 1.5 && (
+                            <p className="text-sm text-gray-400 text-center italic">
+                              Tip: High elasticity often means many substitutes are available or it's a luxury people can do without.
+                            </p>
+                          )}
                         </div>
 
                         <motion.button

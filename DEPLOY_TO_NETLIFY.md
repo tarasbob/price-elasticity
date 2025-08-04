@@ -44,7 +44,7 @@ Your project is ready to deploy! Follow these steps to deploy your Price Elastic
    - **Branch to deploy**: main
    - **Base directory**: _(leave empty)_
    - **Build command**: `npm run build`
-   - **Publish directory**: `.next`
+   - **Publish directory**: `out`
    - **Functions directory**: (leave empty)
 
 5. **Environment Variables** (if needed)

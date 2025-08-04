@@ -33,41 +33,54 @@ interface SessionStats {
 type QuizStage = 'demand' | 'supply' | 'result' | 'sessionComplete';
 
 const ElasticityExplanation = ({ onClose }: { onClose: () => void }) => {
+  // Close on Escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [onClose]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
+      className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
       onClick={onClose}
     >
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="bg-white rounded-3xl shadow-2xl max-w-4xl w-full my-8 p-8"
+        className="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col border border-gray-100"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative">
+        {/* Header with close button */}
+        <div className="relative p-4 md:p-6 pb-4 md:pb-6 border-b border-gray-100">
           <button
             onClick={onClose}
-            className="absolute -top-2 -right-2 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
+            className="absolute top-2 right-2 md:top-4 md:right-4 w-8 h-8 md:w-10 md:h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-all duration-200 group hover:shadow-lg"
           >
-            <span className="text-gray-600 text-xl">×</span>
+            <span className="text-gray-600 text-xl md:text-2xl group-hover:rotate-90 transition-transform duration-200">×</span>
           </button>
           
-          <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent pr-10 md:pr-12">
             Understanding Economic Elasticities & Tax Incidence
           </h2>
-          
-          <div className="space-y-6 text-gray-700">
+        </div>
+        
+        {/* Scrollable content */}
+        <div className="overflow-y-auto flex-1 px-4 md:px-6 pb-4 md:pb-6">
+          <div className="space-y-4 md:space-y-6 text-gray-700 mt-4">
             {/* Demand Elasticity Section */}
-            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6">
-              <h3 className="font-bold text-xl mb-3 text-gray-800">📉 Price Elasticity of Demand</h3>
-              <p className="leading-relaxed mb-3">
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl md:rounded-2xl p-4 md:p-6">
+              <h3 className="font-bold text-lg md:text-xl mb-2 md:mb-3 text-gray-800">📉 Price Elasticity of Demand</h3>
+              <p className="leading-relaxed mb-3 text-sm md:text-base">
                 Measures how much consumers change their purchasing when prices change. Think of it as "consumer sensitivity to price."
               </p>
-              <div className="bg-white/50 rounded-xl p-4 space-y-2 text-sm">
+              <div className="bg-white/50 rounded-lg md:rounded-xl p-3 md:p-4 space-y-1.5 md:space-y-2 text-xs md:text-sm">
                 <p>• <strong>Always negative</strong> (higher price → lower quantity demanded)</p>
                 <p>• <strong>-0.1 to -0.5:</strong> Inelastic (necessities, addictions)</p>
                 <p>• <strong>-0.5 to -1.5:</strong> Moderate elasticity</p>
@@ -76,12 +89,12 @@ const ElasticityExplanation = ({ onClose }: { onClose: () => void }) => {
             </div>
             
             {/* Supply Elasticity Section */}
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6">
-              <h3 className="font-bold text-xl mb-3 text-gray-800">📈 Price Elasticity of Supply</h3>
-              <p className="leading-relaxed mb-3">
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl md:rounded-2xl p-4 md:p-6">
+              <h3 className="font-bold text-lg md:text-xl mb-2 md:mb-3 text-gray-800">📈 Price Elasticity of Supply</h3>
+              <p className="leading-relaxed mb-3 text-sm md:text-base">
                 Measures how much producers change their output when prices change. Think of it as "producer flexibility."
               </p>
-              <div className="bg-white/50 rounded-xl p-4 space-y-2 text-sm">
+              <div className="bg-white/50 rounded-lg md:rounded-xl p-3 md:p-4 space-y-1.5 md:space-y-2 text-xs md:text-sm">
                 <p>• <strong>Always positive</strong> (higher price → more quantity supplied)</p>
                 <p>• <strong>0 to 0.5:</strong> Inelastic (hard to increase production)</p>
                 <p>• <strong>0.5 to 1.5:</strong> Moderate elasticity</p>
@@ -90,17 +103,17 @@ const ElasticityExplanation = ({ onClose }: { onClose: () => void }) => {
             </div>
 
             {/* Tax Incidence Section */}
-            <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-6">
-              <h3 className="font-bold text-xl mb-3 text-gray-800">⚖️ Tax Incidence (Who Really Pays?)</h3>
-              <p className="leading-relaxed mb-3">
+            <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-xl md:rounded-2xl p-4 md:p-6">
+              <h3 className="font-bold text-lg md:text-xl mb-2 md:mb-3 text-gray-800">⚖️ Tax Incidence (Who Really Pays?)</h3>
+              <p className="leading-relaxed mb-3 text-sm md:text-base">
                 When a tariff or tax is imposed, who actually bears the cost? The formula:
               </p>
-              <div className="bg-white/70 rounded-xl p-4 text-center mb-4">
-                <p className="text-lg font-mono">
+              <div className="bg-white/70 rounded-lg md:rounded-xl p-3 md:p-4 text-center mb-3 md:mb-4">
+                <p className="text-sm md:text-lg font-mono break-all">
                   Buyer's Share = Supply Elasticity ÷ (|Demand Elasticity| + Supply Elasticity)
                 </p>
               </div>
-              <div className="space-y-3 text-sm">
+              <div className="space-y-2 md:space-y-3 text-xs md:text-sm">
                 <p>• <strong>Result = 80%:</strong> Importers/buyers pay 80% of the tariff through higher prices</p>
                 <p>• <strong>Result = 20%:</strong> Importers only pay 20% (exporters absorb 80%)</p>
                 <p className="italic text-gray-600">The less flexible party (lower elasticity) bears more of the tax burden!</p>
@@ -108,12 +121,12 @@ const ElasticityExplanation = ({ onClose }: { onClose: () => void }) => {
             </div>
             
             {/* Scoring System */}
-            <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl p-6">
-              <h3 className="font-bold text-xl mb-3 text-gray-800">🏆 Scoring System</h3>
-              <p className="mb-3">
+            <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl md:rounded-2xl p-4 md:p-6">
+              <h3 className="font-bold text-lg md:text-xl mb-2 md:mb-3 text-gray-800">🏆 Scoring System</h3>
+              <p className="mb-3 text-sm md:text-base">
                 Points are awarded using an exponential decay formula based on accuracy:
               </p>
-              <div className="bg-white/50 rounded-xl p-4 space-y-2 text-sm">
+              <div className="bg-white/50 rounded-lg md:rounded-xl p-3 md:p-4 space-y-1.5 md:space-y-2 text-xs md:text-sm">
                 <p>• <strong>Demand Elasticity:</strong> Up to 2,000 points</p>
                 <p>• <strong>Supply Elasticity:</strong> Up to 2,000 points</p>
                 <p>• <strong>Tax Incidence:</strong> Up to 1,000 points</p>

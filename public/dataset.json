@@ -1,41 +1,2677 @@
 [
-  { "good": "Cigarettes (general)",               "elasticity": -0.45 },
-  { "good": "Cigarettes (youth)",                 "elasticity": -0.65 },
-  { "good": "Beer",                               "elasticity": -0.60 },
-  { "good": "Wine",                               "elasticity": -1.00 },
-  { "good": "Spirits",                            "elasticity": -1.50 },
-  { "good": "Airline travel (first class)",       "elasticity": -0.30 },
-  { "good": "Airline travel (discount)",          "elasticity": -0.90 },
-  { "good": "Airline travel (pleasure travellers)","elasticity": -1.50 },
-  { "good": "Broiler chickens",                   "elasticity": -0.55 },
-  { "good": "Oil (world)",                        "elasticity": -0.40 },
-  { "good": "Car fuel (short run, US)",           "elasticity": -0.09 },
-  { "good": "Car fuel (long run, US)",            "elasticity": -0.31 },
-  { "good": "Car fuel (short run, Saudi Arabia)", "elasticity": -0.11 },
-  { "good": "Cinema visits (US)",                 "elasticity": -0.87 },
-  { "good": "Live performing arts",               "elasticity": -0.65 },
-  { "good": "Medicine (medical insurance, US)",   "elasticity": -0.31 },
-  { "good": "Pediatric visits",                   "elasticity": -0.05 },
-  { "good": "Patents",                            "elasticity": -0.45 },
-  { "good": "Rice (Austria)",                     "elasticity": -0.47 },
-  { "good": "Rice (Bangladesh)",                  "elasticity": -0.80 },
-  { "good": "Rice (China)",                       "elasticity": -0.80 },
-  { "good": "Rice (Japan)",                       "elasticity": -0.25 },
-  { "good": "Rice (US)",                          "elasticity": -0.55 },
-  { "good": "Trademarks (international)",         "elasticity": -0.33 },
-  { "good": "Bus travel (US)",                    "elasticity": -0.20 },
-  { "good": "Ford compact automobile",            "elasticity": -2.80 },
-  { "good": "Commuter parking",                   "elasticity": -0.52 },
-  { "good": "Cannabis (US)",                      "elasticity": -0.655 },
-  { "good": "Soft drinks (general)",              "elasticity": -0.90 },
-  { "good": "Coca‑Cola",                          "elasticity": -3.80 },
-  { "good": "Mountain Dew",                       "elasticity": -4.40 },
-  { "good": "Steel",                              "elasticity": -0.25 },
-  { "good": "Mobile telecommunications",          "elasticity": -0.405 },
-  { "good": "Broadband",                          "elasticity": -0.434 },
-  { "good": "Eggs (US households)",               "elasticity": -0.10 },
-  { "good": "Eggs (Canada)",                      "elasticity": -0.35 },
-  { "good": "Eggs (South Africa)",                "elasticity": -0.55 },
-  { "good": "Golf",                               "elasticity": -0.50 },
-  { "good": "University education",               "elasticity":  0.00 }
+  {
+    "good": "Cigarettes (general)",
+    "demandElasticity": -0.45,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Cigarettes (youth)",
+    "demandElasticity": -0.65,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Beer",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Wine",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.85
+  },
+  {
+    "good": "Spirits",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Airline travel (first class)",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 0.2
+  },
+  {
+    "good": "Airline travel (discount)",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Airline travel (pleasure travellers)",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Broiler chickens",
+    "demandElasticity": -0.55,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Oil (world)",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 0.15
+  },
+  {
+    "good": "Car fuel (short run)",
+    "demandElasticity": -0.09,
+    "supplyElasticity": 0.2
+  },
+  {
+    "good": "Car fuel (long run)",
+    "demandElasticity": -0.31,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Cinema visits",
+    "demandElasticity": -0.87,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Live performing arts",
+    "demandElasticity": -0.65,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Medicine (with insurance)",
+    "demandElasticity": -0.31,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Pediatric visits",
+    "demandElasticity": -0.05,
+    "supplyElasticity": 0.35
+  },
+  {
+    "good": "Patents",
+    "demandElasticity": -0.45,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Rice (developed countries)",
+    "demandElasticity": -0.25,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Rice (developing countries)",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Trademarks",
+    "demandElasticity": -0.33,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Bus travel",
+    "demandElasticity": -0.2,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Ford compact automobile",
+    "demandElasticity": -2.8,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Commuter parking",
+    "demandElasticity": -0.52,
+    "supplyElasticity": 0.1
+  },
+  {
+    "good": "Cannabis",
+    "demandElasticity": -0.655,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Soft drinks (general)",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Coca-Cola",
+    "demandElasticity": -3.8,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Mountain Dew",
+    "demandElasticity": -4.4,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Steel",
+    "demandElasticity": -0.25,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Mobile telecommunications",
+    "demandElasticity": -0.405,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Broadband internet",
+    "demandElasticity": -0.434,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Eggs",
+    "demandElasticity": -0.35,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Golf",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 0.25
+  },
+  {
+    "good": "University education",
+    "demandElasticity": -0.1,
+    "supplyElasticity": 0.2
+  },
+  {
+    "good": "Milk",
+    "demandElasticity": -0.36,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Bread",
+    "demandElasticity": -0.25,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Butter",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Coffee",
+    "demandElasticity": -0.34,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Tea",
+    "demandElasticity": -0.45,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Sugar",
+    "demandElasticity": -0.31,
+    "supplyElasticity": 0.7
+  },
+  {
+    "good": "Salt",
+    "demandElasticity": -0.1,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Beef",
+    "demandElasticity": -0.75,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Pork",
+    "demandElasticity": -0.72,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Fish",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Apples",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Oranges",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.35
+  },
+  {
+    "good": "Bananas",
+    "demandElasticity": -0.74,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Potatoes",
+    "demandElasticity": -0.2,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Tomatoes",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.55
+  },
+  {
+    "good": "Lettuce",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Onions",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 0.45
+  },
+  {
+    "good": "Cheese",
+    "demandElasticity": -0.75,
+    "supplyElasticity": 0.55
+  },
+  {
+    "good": "Yogurt",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.7
+  },
+  {
+    "good": "Ice cream",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Gasoline (regular)",
+    "demandElasticity": -0.25,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Gasoline (premium)",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Diesel fuel",
+    "demandElasticity": -0.21,
+    "supplyElasticity": 0.35
+  },
+  {
+    "good": "Electric vehicles",
+    "demandElasticity": -1.95,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Hybrid vehicles",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Bicycles",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Motorcycles",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Train tickets",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 0.2
+  },
+  {
+    "good": "Taxi services",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Uber/Lyft rides",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Car insurance",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Car repairs",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Tires",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Motor oil",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Prescription drugs",
+    "demandElasticity": -0.2,
+    "supplyElasticity": 0.35
+  },
+  {
+    "good": "Over-the-counter drugs",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Dental services",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Eye exams",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Eyeglasses",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Contact lenses",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Hospital services",
+    "demandElasticity": -0.15,
+    "supplyElasticity": 0.2
+  },
+  {
+    "good": "Emergency room visits",
+    "demandElasticity": -0.05,
+    "supplyElasticity": 0.15
+  },
+  {
+    "good": "Cosmetic surgery",
+    "demandElasticity": -2.0,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Gym memberships",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Vitamins",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Health insurance",
+    "demandElasticity": -0.2,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Movie tickets",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Streaming services",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Cable TV",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Video games",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Gaming consoles",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Books",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "E-books",
+    "demandElasticity": -1.8,
+    "supplyElasticity": 5.0
+  },
+  {
+    "good": "Magazines",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Newspapers",
+    "demandElasticity": -0.42,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Concert tickets",
+    "demandElasticity": -0.75,
+    "supplyElasticity": 0.1
+  },
+  {
+    "good": "Sports event tickets",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.05
+  },
+  {
+    "good": "Theme park tickets",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.2
+  },
+  {
+    "good": "Museum admission",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Smartphones",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Laptop computers",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Desktop computers",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Tablets",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Smart watches",
+    "demandElasticity": -1.8,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Headphones",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Televisions",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Digital cameras",
+    "demandElasticity": -1.6,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Printers",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Computer software",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Cloud storage",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 3.5
+  },
+  {
+    "good": "Internet routers",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Electricity",
+    "demandElasticity": -0.13,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Natural gas",
+    "demandElasticity": -0.18,
+    "supplyElasticity": 0.25
+  },
+  {
+    "good": "Water service",
+    "demandElasticity": -0.2,
+    "supplyElasticity": 0.1
+  },
+  {
+    "good": "Sewage service",
+    "demandElasticity": -0.05,
+    "supplyElasticity": 0.05
+  },
+  {
+    "good": "Trash collection",
+    "demandElasticity": -0.08,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Solar panels",
+    "demandElasticity": -1.6,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Wind turbines",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Primary education",
+    "demandElasticity": -0.05,
+    "supplyElasticity": 0.1
+  },
+  {
+    "good": "High school education",
+    "demandElasticity": -0.08,
+    "supplyElasticity": 0.15
+  },
+  {
+    "good": "Community college",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Private university",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 0.25
+  },
+  {
+    "good": "Online courses",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Textbooks",
+    "demandElasticity": -0.2,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "School supplies",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Tutoring services",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Test prep courses",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "T-shirts",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Jeans",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Business suits",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Dresses",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Shoes",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Sneakers",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Winter coats",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Underwear",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Socks",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Handbags",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Jewelry",
+    "demandElasticity": -2.0,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Watches",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Rent (urban)",
+    "demandElasticity": -0.18,
+    "supplyElasticity": 0.2
+  },
+  {
+    "good": "Rent (suburban)",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Home purchases",
+    "demandElasticity": -0.65,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Furniture",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Mattresses",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Kitchen appliances",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.1
+  },
+  {
+    "good": "Washing machines",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Refrigerators",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 0.9
+  },
+  {
+    "good": "Air conditioners",
+    "demandElasticity": -0.75,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Heating systems",
+    "demandElasticity": -0.35,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Home insurance",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Property taxes",
+    "demandElasticity": -0.01,
+    "supplyElasticity": 0.0
+  },
+  {
+    "good": "Shampoo",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Soap",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Toothpaste",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Deodorant",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Razors",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Makeup",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Perfume",
+    "demandElasticity": -1.8,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Hair styling products",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Toilet paper",
+    "demandElasticity": -0.25,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Paper towels",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Laundry detergent",
+    "demandElasticity": -0.55,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Dish soap",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Bank accounts",
+    "demandElasticity": -0.1,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Credit cards",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Personal loans",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Mortgages",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Auto loans",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Student loans",
+    "demandElasticity": -0.2,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Investment accounts",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 3.5
+  },
+  {
+    "good": "Life insurance",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Retirement accounts",
+    "demandElasticity": -0.15,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Diamond jewelry",
+    "demandElasticity": -2.5,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Luxury cars",
+    "demandElasticity": -2.2,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Yachts",
+    "demandElasticity": -3.0,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Private jets",
+    "demandElasticity": -2.8,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Designer clothing",
+    "demandElasticity": -2.0,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Fine wine",
+    "demandElasticity": -1.8,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Caviar",
+    "demandElasticity": -2.6,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Gold",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.2
+  },
+  {
+    "good": "Silver",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.25
+  },
+  {
+    "good": "Art (paintings)",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 0.05
+  },
+  {
+    "good": "Antiques",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.0
+  },
+  {
+    "good": "Pet food",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Veterinary services",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Pet toys",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Pet grooming",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Baby formula",
+    "demandElasticity": -0.1,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Diapers",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Baby clothes",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Toys",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Strollers",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Hotels (budget)",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Hotels (luxury)",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Vacation packages",
+    "demandElasticity": -1.8,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Travel insurance",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Luggage",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Wheat",
+    "demandElasticity": -0.08,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Corn",
+    "demandElasticity": -0.12,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Soybeans",
+    "demandElasticity": -0.15,
+    "supplyElasticity": 0.7
+  },
+  {
+    "good": "Cotton",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Rubber",
+    "demandElasticity": -0.2,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Copper",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 0.35
+  },
+  {
+    "good": "Aluminum",
+    "demandElasticity": -0.35,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Iron ore",
+    "demandElasticity": -0.25,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Coal",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 0.25
+  },
+  {
+    "good": "Natural rubber",
+    "demandElasticity": -0.2,
+    "supplyElasticity": 0.15
+  },
+  {
+    "good": "Cement",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Lumber",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Glass",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Plastic products",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Paint",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Industrial machinery",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Construction equipment",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Office supplies",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Paper",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Pens",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Office furniture",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Business software",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Fast food",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Restaurant meals (casual)",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Restaurant meals (fine dining)",
+    "demandElasticity": -2.0,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Food delivery services",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Meal kits",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Tobacco (smokeless)",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "E-cigarettes",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Marijuana (medical)",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Marijuana (recreational)",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Flowers",
+    "demandElasticity": -1.8,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Greeting cards",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Gift wrap",
+    "demandElasticity": -2.0,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Candles",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Lawn mowers",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Garden tools",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Seeds",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Fertilizer",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Pesticides",
+    "demandElasticity": -0.35,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Sporting goods",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Exercise equipment",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Athletic apparel",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Camping gear",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "Fishing equipment",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Hunting equipment",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Legal services",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Accounting services",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Consulting services",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Advertising services",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Cleaning services",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Security services",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Landscaping services",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Postage stamps",
+    "demandElasticity": -0.2,
+    "supplyElasticity": 0.0
+  },
+  {
+    "good": "Shipping services",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Storage units",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Moving services",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Wedding services",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Photography services",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Catering services",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Event planning",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Hearing aids",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Wheelchairs",
+    "demandElasticity": -0.2,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Prosthetics",
+    "demandElasticity": -0.15,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Medical equipment",
+    "demandElasticity": -0.25,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Musical instruments",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Music lessons",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Art supplies",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Craft supplies",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Batteries",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Light bulbs",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Extension cords",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Power tools",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Hand tools",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Sunglasses",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Umbrellas",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Backpacks",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Wallets",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Belts",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Bottled water",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Energy drinks",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Protein bars",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Organic food",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Gluten-free products",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Cryptocurrency",
+    "demandElasticity": -2.5,
+    "supplyElasticity": 0.0
+  },
+  {
+    "good": "NFTs",
+    "demandElasticity": -3.0,
+    "supplyElasticity": 5.0
+  },
+  {
+    "good": "Domain names",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Web hosting",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 3.5
+  },
+  {
+    "good": "Parking meters",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 0.0
+  },
+  {
+    "good": "Toll roads",
+    "demandElasticity": -0.2,
+    "supplyElasticity": 0.1
+  },
+  {
+    "good": "Public transit passes",
+    "demandElasticity": -0.25,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Fireworks",
+    "demandElasticity": -2.0,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Halloween costumes",
+    "demandElasticity": -1.8,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Christmas decorations",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Birthday party supplies",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Board games",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Puzzles",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Playing cards",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Dice",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 5.0
+  },
+  {
+    "good": "Sunscreen",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Insect repellent",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "First aid supplies",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Hand sanitizer",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Vending machine snacks",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Airport food",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 0.3
+  },
+  {
+    "good": "Stadium concessions",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 0.2
+  },
+  {
+    "good": "Movie theater snacks",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Carbon offsets",
+    "demandElasticity": -1.8,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Renewable energy credits",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Electric vehicle charging",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Recycling services",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Dating app subscriptions",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 5.0
+  },
+  {
+    "good": "Social media advertising",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Email marketing services",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 3.5
+  },
+  {
+    "good": "SEO services",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "3D printing services",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Laser cutting services",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "CNC machining",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Escape rooms",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Laser tag",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 0.6
+  },
+  {
+    "good": "Bowling",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Mini golf",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 0.5
+  },
+  {
+    "good": "Subscription boxes",
+    "demandElasticity": -1.6,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Mystery boxes",
+    "demandElasticity": -2.0,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Collectible cards",
+    "demandElasticity": -1.8,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Comic books",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Home security systems",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Smart home devices",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Video doorbells",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Security cameras",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Meditation apps",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 5.0
+  },
+  {
+    "good": "Fitness apps",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 4.5
+  },
+  {
+    "good": "Language learning apps",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Productivity apps",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 4.5
+  },
+  {
+    "good": "Tattoos",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Piercings",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Hair coloring",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Spa treatments",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Food trucks",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Ice cream trucks",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Coffee shops",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Bubble tea",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Coworking spaces",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Virtual offices",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Conference rooms",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Car sharing",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Bike sharing",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Scooter sharing",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Meal delivery (elderly)",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Senior care services",
+    "demandElasticity": -0.25,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Assisted living",
+    "demandElasticity": -0.2,
+    "supplyElasticity": 0.4
+  },
+  {
+    "good": "Podcasts (premium)",
+    "demandElasticity": -1.6,
+    "supplyElasticity": 5.0
+  },
+  {
+    "good": "Audiobooks",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Online magazines",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 3.5
+  },
+  {
+    "good": "VPN services",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Password managers",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 4.5
+  },
+  {
+    "good": "Antivirus software",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 3.5
+  },
+  {
+    "good": "Plant-based meat",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Lab-grown meat",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Protein powder",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Drones",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Action cameras",
+    "demandElasticity": -1.6,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "VR headsets",
+    "demandElasticity": -1.8,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Smart speakers",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Kombucha",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Coconut water",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Smoothies",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Fresh juice",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Ride-sharing (airport)",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Ride-sharing (night)",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Ride-sharing (rush hour)",
+    "demandElasticity": -0.5,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Standing desks",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Ergonomic chairs",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.3
+  },
+  {
+    "good": "Monitor arms",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Sleep trackers",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "White noise machines",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Weighted blankets",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Foam rollers",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Resistance bands",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Yoga mats",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 2.8
+  },
+  {
+    "good": "Essential oils",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Diffusers",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Aromatherapy candles",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Reusable bags",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Metal straws",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Bamboo products",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Smart thermostats",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Smart locks",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Smart lighting",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Meal replacement shakes",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Nutrition bars",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 3.5
+  },
+  {
+    "good": "Supplements",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Air purifiers",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Humidifiers",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Dehumidifiers",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "UV sanitizers",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Face masks (medical)",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Face masks (fashion)",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Wireless chargers",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Power banks",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "USB cables",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 4.0
+  },
+  {
+    "good": "Noise-canceling headphones",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Wireless earbuds",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Bluetooth speakers",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Electric toothbrushes",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Water flossers",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Teeth whitening kits",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Robotic vacuums",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Steam mops",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Pressure washers",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.6
+  },
+  {
+    "good": "Instant pots",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Air fryers",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Sous vide machines",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Cold brew coffee makers",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Espresso machines",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "French press",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Skincare devices",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Hair removal devices",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Facial steamers",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Portable blenders",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Juicers",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Food processors",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Smart scales",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Body composition analyzers",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Blood pressure monitors",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Portable projectors",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Streaming devices",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Universal remotes",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Electric scooters",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Hoverboards",
+    "demandElasticity": -1.8,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Electric skateboards",
+    "demandElasticity": -2.0,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Smart jewelry",
+    "demandElasticity": -1.6,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Fitness rings",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Posture correctors",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Blue light glasses",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Reading glasses",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 3.5
+  },
+  {
+    "good": "Prescription sunglasses",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Minimalist wallets",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "RFID blocking products",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Travel organizers",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.8
+  },
+  {
+    "good": "Bamboo toothbrushes",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Shampoo bars",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Reusable cotton pads",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 3.5
+  },
+  {
+    "good": "Smart mirrors",
+    "demandElasticity": -1.8,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Digital photo frames",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Smart displays",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Language translation devices",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Digital voice recorders",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "E-readers",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Portable fans",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Space heaters",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Tower fans",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Smart plugs",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Smart switches",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Smart outlets",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.8
+  },
+  {
+    "good": "Wireless keyboards",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Gaming mice",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Webcams",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "External hard drives",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "SSD drives",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "USB flash drives",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 3.5
+  },
+  {
+    "good": "Mechanical keyboards",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Gaming chairs",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Monitor stands",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Ring lights",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.8
+  },
+  {
+    "good": "Microphones",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Green screens",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Label makers",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Laminators",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Paper shredders",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Car phone mounts",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Dashboard cameras",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "GPS devices",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Baby monitors",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Baby carriers",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Car seats",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Electric blankets",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Heating pads",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Cooling pillows",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Wine aerators",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Cocktail shakers",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Beer brewing kits",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Soda makers",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Ice makers",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Wine coolers",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Knife sharpeners",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Kitchen scales",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Spice grinders",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.8
+  },
+  {
+    "good": "Bathroom scales",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Shower heads",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.2
+  },
+  {
+    "good": "Bidets",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Fire extinguishers",
+    "demandElasticity": -0.3,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Smoke detectors",
+    "demandElasticity": -0.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Carbon monoxide detectors",
+    "demandElasticity": -0.25,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Outdoor grills",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Patio furniture",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Fire pits",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Pool chemicals",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Pool toys",
+    "demandElasticity": -1.6,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Hot tubs",
+    "demandElasticity": -1.8,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Generators",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Solar generators",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Emergency supplies",
+    "demandElasticity": -0.4,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Telescopes",
+    "demandElasticity": -1.5,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Binoculars",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Microscopes",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.4
+  },
+  {
+    "good": "3D printers",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Vinyl cutters",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Heat presses",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Metal detectors",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Drones (commercial)",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Weather stations",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Aquarium supplies",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Terrariums",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Bird feeders",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 3.0
+  },
+  {
+    "good": "Massage guns",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "TENS units",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Acupressure mats",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Portable generators",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Jump starters",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Tire inflators",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Smart garage door openers",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Smart sprinkler systems",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Robot lawn mowers",
+    "demandElasticity": -1.6,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Ultrasonic cleaners",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Steam cleaners",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Carpet cleaners",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Karaoke machines",
+    "demandElasticity": -1.4,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "DJ equipment",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "PA systems",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Soldering irons",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 2.5
+  },
+  {
+    "good": "Multimeters",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Oscilloscopes",
+    "demandElasticity": -0.6,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Sewing machines",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.5
+  },
+  {
+    "good": "Sergers",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Embroidery machines",
+    "demandElasticity": -1.3,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Pottery wheels",
+    "demandElasticity": -1.2,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Kilns",
+    "demandElasticity": -1.0,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Jewelry making tools",
+    "demandElasticity": -1.1,
+    "supplyElasticity": 2.0
+  },
+  {
+    "good": "Woodworking tools",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.8
+  },
+  {
+    "good": "Table saws",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 1.2
+  },
+  {
+    "good": "Band saws",
+    "demandElasticity": -0.85,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Welding equipment",
+    "demandElasticity": -0.7,
+    "supplyElasticity": 1.0
+  },
+  {
+    "good": "Plasma cutters",
+    "demandElasticity": -0.8,
+    "supplyElasticity": 0.8
+  },
+  {
+    "good": "Angle grinders",
+    "demandElasticity": -0.9,
+    "supplyElasticity": 1.5
+  }
 ]

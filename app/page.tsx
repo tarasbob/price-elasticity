@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 interface Good {
   good: string;
-  elasticity: number;
+  demandElasticity: number;
+  supplyElasticity: number;
 }
 
 interface QuizStats {
@@ -13,8 +14,16 @@ interface QuizStats {
   totalQuestions: number;
   streak: number;
   bestStreak: number;
-  recentGuesses: Array<{ guess: number; actual: number; difference: number }>;
+  recentGuesses: Array<{ 
+    demandGuess: number; 
+    demandActual: number; 
+    supplyGuess: number;
+    supplyActual: number;
+    taxIncidence: number;
+  }>;
 }
+
+type QuizStage = 'demand' | 'supply' | 'result';
 
 const ElasticityExplanation = ({ onClose }: { onClose: () => void }) => {
   return (
@@ -22,14 +31,14 @@ const ElasticityExplanation = ({ onClose }: { onClose: () => void }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
       onClick={onClose}
     >
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-8"
+        className="bg-white rounded-3xl shadow-2xl max-w-4xl w-full my-8 p-8"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative">
@@ -41,63 +50,67 @@ const ElasticityExplanation = ({ onClose }: { onClose: () => void }) => {
           </button>
           
           <h2 className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Understanding Price Elasticity of Demand
+            Understanding Economic Elasticities & Tax Incidence
           </h2>
           
           <div className="space-y-6 text-gray-700">
+            {/* Demand Elasticity Section */}
             <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6">
-              <h3 className="font-bold text-xl mb-3 text-gray-800">What is it?</h3>
-              <p className="leading-relaxed">
-                Price elasticity of demand measures how much people change their buying habits when prices change. 
-                It&apos;s like a sensitivity meter - some products are very sensitive to price changes, while others aren&apos;t.
+              <h3 className="font-bold text-xl mb-3 text-gray-800">📉 Price Elasticity of Demand</h3>
+              <p className="leading-relaxed mb-3">
+                Measures how much consumers change their purchasing when prices change. Think of it as "consumer sensitivity to price."
               </p>
-            </div>
-            
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6">
-              <h3 className="font-bold text-xl mb-3 text-gray-800">The Numbers Explained</h3>
-              <div className="space-y-3">
-                <p>• The number is always negative (people buy less when prices go up)</p>
-                <p>• Closer to 0 = Less sensitive to price (inelastic)</p>
-                <p>• Closer to -5 = Very sensitive to price (elastic)</p>
+              <div className="bg-white/50 rounded-xl p-4 space-y-2 text-sm">
+                <p>• <strong>Always negative</strong> (higher price → lower quantity demanded)</p>
+                <p>• <strong>-0.1 to -0.5:</strong> Inelastic (necessities, addictions)</p>
+                <p>• <strong>-0.5 to -1.5:</strong> Moderate elasticity</p>
+                <p>• <strong>-1.5 to -5:</strong> Very elastic (luxuries, many substitutes)</p>
               </div>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-6">
-                <h4 className="font-bold text-lg mb-3 text-orange-800">Inelastic Examples (-0.5 to 0)</h4>
-                <ul className="space-y-2 text-sm">
-                  <li>🚬 Cigarettes: People addicted buy them regardless of price</li>
-                  <li>⛽ Gasoline: People need it to get to work</li>
-                  <li>💊 Medicine: Health necessities</li>
-                  <li>🥚 Basic foods: Essential for survival</li>
-                  <li>✈️ First-class travel: Status symbol (Veblen effect)</li>
-                </ul>
-                <p className="mt-3 text-xs text-orange-700 italic">
-                  Note: Low elasticity can be due to necessity OR Veblen effects (where high price increases desirability).
+            {/* Supply Elasticity Section */}
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6">
+              <h3 className="font-bold text-xl mb-3 text-gray-800">📈 Price Elasticity of Supply</h3>
+              <p className="leading-relaxed mb-3">
+                Measures how much producers change their output when prices change. Think of it as "producer flexibility."
+              </p>
+              <div className="bg-white/50 rounded-xl p-4 space-y-2 text-sm">
+                <p>• <strong>Always positive</strong> (higher price → more quantity supplied)</p>
+                <p>• <strong>0 to 0.5:</strong> Inelastic (hard to increase production)</p>
+                <p>• <strong>0.5 to 1.5:</strong> Moderate elasticity</p>
+                <p>• <strong>1.5+:</strong> Very elastic (easy to ramp up production)</p>
+              </div>
+            </div>
+
+            {/* Tax Incidence Section */}
+            <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-6">
+              <h3 className="font-bold text-xl mb-3 text-gray-800">⚖️ Tax Incidence (Who Really Pays?)</h3>
+              <p className="leading-relaxed mb-3">
+                When a tariff or tax is imposed, who actually bears the cost? The formula:
+              </p>
+              <div className="bg-white/70 rounded-xl p-4 text-center mb-4">
+                <p className="text-lg font-mono">
+                  Buyer's Share = Supply Elasticity ÷ (|Demand Elasticity| + Supply Elasticity)
                 </p>
               </div>
-              
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6">
-                <h4 className="font-bold text-lg mb-3 text-purple-800">Elastic Examples (-1.5 to -5)</h4>
-                <ul className="space-y-2 text-sm">
-                  <li>🥤 Specific soft drinks: Easy to switch brands</li>
-                  <li>✈️ Vacation travel: Can be postponed</li>
-                  <li>🎬 Entertainment: Not essential</li>
-                  <li>🚗 Luxury cars: Many alternatives</li>
-                </ul>
+              <div className="space-y-3 text-sm">
+                <p>• <strong>Result = 80%:</strong> Importers/buyers pay 80% of the tariff through higher prices</p>
+                <p>• <strong>Result = 20%:</strong> Importers only pay 20% (exporters absorb 80%)</p>
+                <p className="italic text-gray-600">The less flexible party (lower elasticity) bears more of the tax burden!</p>
               </div>
             </div>
             
+            {/* Real World Examples */}
             <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl p-6">
-              <h3 className="font-bold text-xl mb-3 text-gray-800">Real World Example</h3>
+              <h3 className="font-bold text-xl mb-3 text-gray-800">🌍 Real World Example</h3>
               <p className="mb-3">
-                If Coca-Cola has an elasticity of -3.8, it means:
+                <strong>Oil tariff:</strong> Demand elasticity = -0.4, Supply elasticity = 0.15
               </p>
-              <p className="font-semibold text-indigo-700">
-                A 10% price increase → 38% decrease in sales!
+              <p className="mb-2">
+                Tax incidence = 0.15 ÷ (0.4 + 0.15) = 27%
               </p>
-              <p className="mt-3 text-sm">
-                That&apos;s why Coke rarely raises prices - people would just buy Pepsi instead.
+              <p className="text-sm">
+                → Importers only pay 27% of the tariff. Oil producers (exporters) absorb 73% because they have limited flexibility to reduce production!
               </p>
             </div>
           </div>
@@ -110,8 +123,9 @@ const ElasticityExplanation = ({ onClose }: { onClose: () => void }) => {
 export default function Home() {
   const [goods, setGoods] = useState<Good[]>([]);
   const [currentGood, setCurrentGood] = useState<Good | null>(null);
-  const [userGuess, setUserGuess] = useState('');
-  const [showResult, setShowResult] = useState(false);
+  const [demandGuess, setDemandGuess] = useState('');
+  const [supplyGuess, setSupplyGuess] = useState('');
+  const [currentStage, setCurrentStage] = useState<QuizStage>('demand');
   const [showExplanation, setShowExplanation] = useState(false);
   const [loading, setLoading] = useState(true);
   const [usedGoods, setUsedGoods] = useState<Set<string>>(new Set());
@@ -150,25 +164,45 @@ export default function Home() {
     setCurrentGood(availableGoods[randomIndex]);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleDemandSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!userGuess || showResult) return;
+    if (!demandGuess || currentStage !== 'demand') return;
     
-    setShowResult(true);
+    setCurrentStage('supply');
+  };
+
+  const handleSupplySubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!supplyGuess || currentStage !== 'supply') return;
     
-    const guess = parseFloat(userGuess);
-    const actual = currentGood!.elasticity;
-    const difference = Math.abs(guess - actual);
+    setCurrentStage('result');
+    
+    const demandGuessNum = parseFloat(demandGuess);
+    const supplyGuessNum = parseFloat(supplyGuess);
+    const demandActual = currentGood!.demandElasticity;
+    const supplyActual = currentGood!.supplyElasticity;
+    
+    // Calculate tax incidence
+    const taxIncidence = supplyActual / (Math.abs(demandActual) + supplyActual);
+    
+    const demandDiff = Math.abs(demandGuessNum - demandActual);
+    const supplyDiff = Math.abs(supplyGuessNum - supplyActual);
     
     setStats(prev => {
       const newTotalQuestions = prev.totalQuestions + 1;
-      const isCorrect = difference <= 0.1;
+      const isCorrect = demandDiff <= 0.1 && supplyDiff <= 0.1;
       const newScore = isCorrect ? prev.score + 1 : prev.score;
       const newStreak = isCorrect ? prev.streak + 1 : 0;
       const newBestStreak = Math.max(newStreak, prev.bestStreak);
       
       const newRecentGuesses = [
-        { guess, actual, difference },
+        { 
+          demandGuess: demandGuessNum, 
+          demandActual, 
+          supplyGuess: supplyGuessNum,
+          supplyActual,
+          taxIncidence
+        },
         ...prev.recentGuesses.slice(0, 4)
       ];
       
@@ -186,15 +220,13 @@ export default function Home() {
     if (currentGood) {
       setUsedGoods(prev => new Set([...prev, currentGood.good]));
     }
-    setShowResult(false);
-    setUserGuess('');
+    setCurrentStage('demand');
+    setDemandGuess('');
+    setSupplyGuess('');
     selectRandomGood(goods, usedGoods);
   };
 
-  const getAccuracyInfo = () => {
-    if (!userGuess || !currentGood) return { color: '', message: '', emoji: '' };
-    const guess = parseFloat(userGuess);
-    const actual = currentGood.elasticity;
+  const getAccuracyInfo = (guess: number, actual: number) => {
     const difference = Math.abs(guess - actual);
     
     if (difference <= 0.1) return { 
@@ -238,7 +270,10 @@ export default function Home() {
     );
   }
 
-  const accuracyInfo = showResult ? getAccuracyInfo() : null;
+  const demandAccuracy = currentStage === 'result' ? getAccuracyInfo(parseFloat(demandGuess), currentGood!.demandElasticity) : null;
+  const supplyAccuracy = currentStage === 'result' ? getAccuracyInfo(parseFloat(supplyGuess), currentGood!.supplyElasticity) : null;
+  const taxIncidence = currentStage === 'result' ? 
+    currentGood!.supplyElasticity / (Math.abs(currentGood!.demandElasticity) + currentGood!.supplyElasticity) : 0;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
@@ -259,17 +294,17 @@ export default function Home() {
           >
             <h1 className="text-5xl md:text-7xl font-extrabold mb-4">
               <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient-x">
-                Price Elasticity Quiz
+                Economic Elasticity Quiz
               </span>
             </h1>
             <p className="text-gray-300 text-lg md:text-xl">
-              Master the art of understanding market dynamics
+              Master supply, demand, and tax incidence
             </p>
             <button
               onClick={() => setShowExplanation(true)}
               className="mt-4 px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/20 transition-all duration-300 hover:scale-105"
             >
-              What is Price Elasticity? 🤔
+              What are elasticities? 🤔
             </button>
           </motion.div>
 
@@ -311,26 +346,34 @@ export default function Home() {
               {stats.recentGuesses.length > 0 && (
                 <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/10">
                   <h3 className="text-white/80 font-semibold mb-4">Recent Attempts</h3>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     {stats.recentGuesses.map((guess, idx) => (
                       <motion.div
                         key={idx}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: idx * 0.1 }}
-                        className="flex justify-between items-center text-sm"
+                        className="text-sm space-y-1"
                       >
-                        <span className="text-gray-400">
-                          {guess.guess.toFixed(2)} → {guess.actual.toFixed(2)}
-                        </span>
-                        <span className={`font-semibold ${
-                          guess.difference <= 0.1 ? 'text-green-400' :
-                          guess.difference <= 0.3 ? 'text-yellow-400' :
-                          guess.difference <= 0.5 ? 'text-orange-400' :
-                          'text-red-400'
-                        }`}>
-                          ±{guess.difference.toFixed(2)}
-                        </span>
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-400">Demand:</span>
+                          <span className="text-white">
+                            {guess.demandGuess.toFixed(2)} → {guess.demandActual.toFixed(2)}
+                          </span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-400">Supply:</span>
+                          <span className="text-white">
+                            {guess.supplyGuess.toFixed(2)} → {guess.supplyActual.toFixed(2)}
+                          </span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-400">Tax on buyer:</span>
+                          <span className="text-yellow-400 font-semibold">
+                            {(guess.taxIncidence * 100).toFixed(1)}%
+                          </span>
+                        </div>
+                        <div className="border-t border-white/10 mt-1"></div>
                       </motion.div>
                     ))}
                   </div>
@@ -348,15 +391,15 @@ export default function Home() {
               {currentGood && (
                 <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/10">
                   <AnimatePresence mode="wait">
-                    {!showResult ? (
+                    {currentStage === 'demand' && (
                       <motion.div
-                        key="question"
+                        key="demand"
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20 }}
                       >
                         <h2 className="text-2xl font-semibold text-white mb-6">
-                          What is the price elasticity of demand for:
+                          Step 1: What is the price elasticity of <span className="text-blue-400">demand</span> for:
                         </h2>
                         
                         <motion.div
@@ -369,21 +412,22 @@ export default function Home() {
                           </p>
                         </motion.div>
 
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form onSubmit={handleDemandSubmit} className="space-y-6">
                           <div>
                             <label className="block text-gray-300 font-medium mb-3">
-                              Enter your guess:
+                              Enter demand elasticity:
                             </label>
                             <input
                               type="number"
                               step="0.01"
-                              value={userGuess}
-                              onChange={(e) => setUserGuess(e.target.value)}
+                              value={demandGuess}
+                              onChange={(e) => setDemandGuess(e.target.value)}
                               className="w-full px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white text-xl font-medium placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:bg-white/20 transition-all duration-300"
                               placeholder="e.g., -0.45"
+                              autoFocus
                             />
                             <div className="mt-3 flex items-center justify-between text-sm text-gray-400">
-                              <span>💡 Remember: Always negative</span>
+                              <span>💡 Always negative</span>
                               <span>Range: 0 to -5</span>
                             </div>
                           </div>
@@ -392,93 +436,213 @@ export default function Home() {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             type="submit"
-                            disabled={!userGuess}
+                            disabled={!demandGuess}
                             className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                           >
-                            Submit Answer
+                            Next: Supply Elasticity →
                           </motion.button>
                         </form>
                       </motion.div>
-                    ) : (
+                    )}
+
+                    {currentStage === 'supply' && (
+                      <motion.div
+                        key="supply"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                      >
+                        <h2 className="text-2xl font-semibold text-white mb-6">
+                          Step 2: What is the price elasticity of <span className="text-green-400">supply</span> for:
+                        </h2>
+                        
+                        <motion.div
+                          initial={{ scale: 0.9 }}
+                          animate={{ scale: 1 }}
+                          className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 mb-8 shadow-2xl"
+                        >
+                          <p className="text-3xl md:text-4xl font-bold text-white text-center">
+                            {currentGood.good}
+                          </p>
+                        </motion.div>
+
+                        <form onSubmit={handleSupplySubmit} className="space-y-6">
+                          <div>
+                            <label className="block text-gray-300 font-medium mb-3">
+                              Enter supply elasticity:
+                            </label>
+                            <input
+                              type="number"
+                              step="0.01"
+                              value={supplyGuess}
+                              onChange={(e) => setSupplyGuess(e.target.value)}
+                              className="w-full px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white text-xl font-medium placeholder-gray-400 focus:outline-none focus:border-green-400 focus:bg-white/20 transition-all duration-300"
+                              placeholder="e.g., 1.2"
+                              autoFocus
+                            />
+                            <div className="mt-3 flex items-center justify-between text-sm text-gray-400">
+                              <span>💡 Always positive</span>
+                              <span>Range: 0 to 5+</span>
+                            </div>
+                          </div>
+
+                          <motion.button
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            type="submit"
+                            disabled={!supplyGuess}
+                            className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold text-lg rounded-2xl hover:from-green-700 hover:to-emerald-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                          >
+                            Submit & See Results
+                          </motion.button>
+                        </form>
+                      </motion.div>
+                    )}
+
+                    {currentStage === 'result' && (
                       <motion.div
                         key="result"
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         className="space-y-6"
                       >
-                        <div className={`bg-gradient-to-r ${accuracyInfo!.color} rounded-2xl p-6 text-center`}>
-                          <p className="text-5xl mb-2">{accuracyInfo!.emoji}</p>
-                          <p className="text-3xl font-bold text-white">{accuracyInfo!.message}</p>
+                        {/* Overall Performance */}
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div className={`bg-gradient-to-r ${demandAccuracy!.color} rounded-2xl p-6 text-center`}>
+                            <p className="text-3xl mb-2">{demandAccuracy!.emoji}</p>
+                            <p className="text-xl font-bold text-white">Demand: {demandAccuracy!.message}</p>
+                          </div>
+                          <div className={`bg-gradient-to-r ${supplyAccuracy!.color} rounded-2xl p-6 text-center`}>
+                            <p className="text-3xl mb-2">{supplyAccuracy!.emoji}</p>
+                            <p className="text-xl font-bold text-white">Supply: {supplyAccuracy!.message}</p>
+                          </div>
                         </div>
 
+                        {/* Detailed Results */}
                         <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 space-y-4">
-                          <div className="flex justify-between items-center">
-                            <span className="text-gray-300">Your Guess:</span>
-                            <span className="text-2xl font-bold text-white">
-                              {parseFloat(userGuess).toFixed(2)}
-                            </span>
-                          </div>
-                          <div className="flex justify-between items-center">
-                            <span className="text-gray-300">Actual Value:</span>
-                            <span className="text-2xl font-bold text-green-400">
-                              {currentGood.elasticity.toFixed(2)}
-                            </span>
-                          </div>
-                          <div className="flex justify-between items-center">
-                            <span className="text-gray-300">Difference:</span>
-                            <span className="text-2xl font-bold text-yellow-400">
-                              {Math.abs(parseFloat(userGuess) - currentGood.elasticity).toFixed(2)}
-                            </span>
+                          <h3 className="text-xl font-bold text-white mb-4">📊 Your Results</h3>
+                          
+                          <div className="grid md:grid-cols-2 gap-4">
+                            <div className="space-y-3">
+                              <h4 className="text-blue-400 font-semibold">Demand Elasticity</h4>
+                              <div className="space-y-2">
+                                <div className="flex justify-between items-center">
+                                  <span className="text-gray-300">Your Guess:</span>
+                                  <span className="text-xl font-bold text-white">
+                                    {parseFloat(demandGuess).toFixed(2)}
+                                  </span>
+                                </div>
+                                <div className="flex justify-between items-center">
+                                  <span className="text-gray-300">Actual:</span>
+                                  <span className="text-xl font-bold text-blue-400">
+                                    {currentGood.demandElasticity.toFixed(2)}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="space-y-3">
+                              <h4 className="text-green-400 font-semibold">Supply Elasticity</h4>
+                              <div className="space-y-2">
+                                <div className="flex justify-between items-center">
+                                  <span className="text-gray-300">Your Guess:</span>
+                                  <span className="text-xl font-bold text-white">
+                                    {parseFloat(supplyGuess).toFixed(2)}
+                                  </span>
+                                </div>
+                                <div className="flex justify-between items-center">
+                                  <span className="text-gray-300">Actual:</span>
+                                  <span className="text-xl font-bold text-green-400">
+                                    {currentGood.supplyElasticity.toFixed(2)}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
 
-                        <div className="bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-2xl p-6 border border-indigo-400/20 space-y-3">
-                          <p className="text-gray-300 text-center font-semibold">
-                            {Math.abs(currentGood.elasticity) < 0.5 ? 
-                              "This good is inelastic - demand changes little with price!" :
-                              Math.abs(currentGood.elasticity) < 1 ?
-                              "This good has moderate elasticity - some sensitivity to price changes." :
-                              "This good is elastic - people are very sensitive to price changes!"
-                            }
-                          </p>
+                        {/* Tax Incidence Calculation */}
+                        <div className="bg-gradient-to-r from-orange-600/20 to-red-600/20 rounded-2xl p-6 border border-orange-400/20">
+                          <h3 className="text-xl font-bold text-white mb-4">⚖️ Tax Incidence Analysis</h3>
                           
-                          {Math.abs(currentGood.elasticity) < 0.5 && (
-                            <div className="bg-white/5 rounded-xl p-4 text-sm text-gray-400">
-                              <p className="mb-2">
-                                <span className="font-semibold text-gray-200">Why is it inelastic?</span> Low elasticity typically occurs due to:
-                              </p>
-                              <ul className="space-y-2 ml-4">
-                                <li className="flex items-start">
-                                  <span className="text-blue-400 mr-2">•</span>
-                                  <div>
-                                    <span className="font-semibold text-gray-300">Necessity:</span> Essential goods that people need regardless of price (medicine, basic food, fuel)
-                                  </div>
-                                </li>
-                                <li className="flex items-start">
-                                  <span className="text-purple-400 mr-2">•</span>
-                                  <div>
-                                    <span className="font-semibold text-gray-300">Veblen Effects:</span> Luxury goods where higher prices actually increase desirability as status symbols (first-class travel, premium brands)
-                                  </div>
-                                </li>
-                              </ul>
-                              <p className="mt-3 text-xs text-gray-300 italic">
-                                This good's low elasticity could be due to either reason - it might be an essential necessity or a status symbol where price increases desirability.
-                              </p>
+                          <div className="bg-white/10 rounded-xl p-4 mb-4">
+                            <p className="text-sm text-gray-300 mb-2">If a tariff or tax is imposed on this good:</p>
+                            <div className="space-y-3">
+                              <div className="flex justify-between items-center">
+                                <span className="text-gray-300">Importers/Buyers pay:</span>
+                                <span className="text-2xl font-bold text-orange-400">
+                                  {(taxIncidence * 100).toFixed(1)}%
+                                </span>
+                              </div>
+                              <div className="flex justify-between items-center">
+                                <span className="text-gray-300">Exporters/Sellers absorb:</span>
+                                <span className="text-2xl font-bold text-red-400">
+                                  {((1 - taxIncidence) * 100).toFixed(1)}%
+                                </span>
+                              </div>
                             </div>
-                          )}
-                          
-                          {Math.abs(currentGood.elasticity) >= 1.5 && (
-                            <p className="text-sm text-gray-400 text-center italic">
-                              Tip: High elasticity often means many substitutes are available or it's a luxury people can do without.
+                          </div>
+
+                          <div className="text-sm text-gray-300 space-y-2">
+                            <p>
+                              <strong>Why this split?</strong> The party that's less flexible (lower elasticity) 
+                              bears more of the tax burden.
                             </p>
-                          )}
+                            {taxIncidence > 0.6 ? (
+                              <p>
+                                In this case, <span className="text-orange-400 font-semibold">buyers are less flexible</span> than 
+                                sellers, so they end up paying most of the tariff through higher prices.
+                              </p>
+                            ) : taxIncidence < 0.4 ? (
+                              <p>
+                                In this case, <span className="text-red-400 font-semibold">sellers are less flexible</span> than 
+                                buyers, so they absorb most of the tariff by accepting lower prices.
+                              </p>
+                            ) : (
+                              <p>
+                                In this case, both parties have similar flexibility, so the tax burden is 
+                                <span className="text-yellow-400 font-semibold"> relatively evenly split</span>.
+                              </p>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Market Insights */}
+                        <div className="bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-2xl p-6 border border-indigo-400/20">
+                          <h3 className="text-lg font-bold text-white mb-3">💡 Market Insights</h3>
+                          <div className="space-y-3 text-sm text-gray-300">
+                            {Math.abs(currentGood.demandElasticity) < 0.5 && (
+                              <p>
+                                • <strong className="text-blue-400">Inelastic demand:</strong> Consumers need this product 
+                                and have few alternatives. Price increases won't significantly reduce consumption.
+                              </p>
+                            )}
+                            {Math.abs(currentGood.demandElasticity) >= 1.5 && (
+                              <p>
+                                • <strong className="text-blue-400">Elastic demand:</strong> Consumers are very price-sensitive. 
+                                Small price increases lead to large drops in consumption.
+                              </p>
+                            )}
+                            {currentGood.supplyElasticity < 0.5 && (
+                              <p>
+                                • <strong className="text-green-400">Inelastic supply:</strong> Producers can't easily 
+                                adjust production. It might be due to limited resources or production capacity.
+                              </p>
+                            )}
+                            {currentGood.supplyElasticity >= 1.5 && (
+                              <p>
+                                • <strong className="text-green-400">Elastic supply:</strong> Producers can easily 
+                                increase or decrease production in response to price changes.
+                              </p>
+                            )}
+                          </div>
                         </div>
 
                         <motion.button
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                           onClick={nextQuestion}
-                          className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold text-lg rounded-2xl hover:from-green-700 hover:to-emerald-700 transition-all duration-300 shadow-lg"
+                          className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-lg rounded-2xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg"
                         >
                           Next Question →
                         </motion.button>
@@ -498,18 +662,22 @@ export default function Home() {
             className="mt-8 bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10"
           >
             <h3 className="text-white font-semibold mb-3">Quick Tips:</h3>
-            <div className="grid md:grid-cols-3 gap-4 text-sm text-gray-300">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-gray-300">
               <div className="flex items-start space-x-2">
-                <span className="text-blue-400">🎯</span>
-                <p>Necessities (medicine, gas) are usually inelastic (-0.1 to -0.5)</p>
+                <span className="text-blue-400">📉</span>
+                <p>Demand: Necessities are inelastic (-0.1 to -0.5)</p>
               </div>
               <div className="flex items-start space-x-2">
                 <span className="text-purple-400">💎</span>
-                <p>Luxuries and specific brands are elastic (-1.5 to -5)</p>
+                <p>Demand: Luxuries are elastic (-1.5 to -5)</p>
               </div>
               <div className="flex items-start space-x-2">
-                <span className="text-pink-400">🔄</span>
-                <p>More substitutes = more elastic (easier to switch)</p>
+                <span className="text-green-400">🏭</span>
+                <p>Supply: Fixed capacity → inelastic (0 to 0.5)</p>
+              </div>
+              <div className="flex items-start space-x-2">
+                <span className="text-orange-400">⚖️</span>
+                <p>Less flexible party pays more tax</p>
               </div>
             </div>
           </motion.div>

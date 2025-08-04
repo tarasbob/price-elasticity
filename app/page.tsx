@@ -9,21 +9,28 @@ interface Good {
   supplyElasticity: number;
 }
 
-interface QuizStats {
-  score: number;
-  totalQuestions: number;
-  streak: number;
-  bestStreak: number;
-  recentGuesses: Array<{ 
-    demandGuess: number; 
-    demandActual: number; 
-    supplyGuess: number;
-    supplyActual: number;
-    taxIncidence: number;
-  }>;
+interface QuestionResult {
+  questionNumber: number;
+  good: string;
+  demandPoints: number;
+  supplyPoints: number;
+  taxIncidencePoints: number;
+  totalPoints: number;
+  demandGuess: number;
+  demandActual: number;
+  supplyGuess: number;
+  supplyActual: number;
+  taxIncidenceGuess: number;
+  taxIncidenceActual: number;
 }
 
-type QuizStage = 'demand' | 'supply' | 'result';
+interface SessionStats {
+  totalPoints: number;
+  questionsCompleted: number;
+  questionResults: QuestionResult[];
+}
+
+type QuizStage = 'demand' | 'supply' | 'result' | 'sessionComplete';
 
 const ElasticityExplanation = ({ onClose }: { onClose: () => void }) => {
   return (
@@ -100,24 +107,30 @@ const ElasticityExplanation = ({ onClose }: { onClose: () => void }) => {
               </div>
             </div>
             
-            {/* Real World Examples */}
+            {/* Scoring System */}
             <div className="bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl p-6">
-              <h3 className="font-bold text-xl mb-3 text-gray-800">🌍 Real World Example</h3>
+              <h3 className="font-bold text-xl mb-3 text-gray-800">🏆 Scoring System</h3>
               <p className="mb-3">
-                <strong>Oil tariff:</strong> Demand elasticity = -0.4, Supply elasticity = 0.15
+                Points are awarded using an exponential decay formula based on accuracy:
               </p>
-              <p className="mb-2">
-                Tax incidence = 0.15 ÷ (0.4 + 0.15) = 27%
-              </p>
-              <p className="text-sm">
-                → Importers only pay 27% of the tariff. Oil producers (exporters) absorb 73% because they have limited flexibility to reduce production!
-              </p>
+              <div className="bg-white/50 rounded-xl p-4 space-y-2 text-sm">
+                <p>• <strong>Demand Elasticity:</strong> Up to 2,000 points</p>
+                <p>• <strong>Supply Elasticity:</strong> Up to 2,000 points</p>
+                <p>• <strong>Tax Incidence:</strong> Up to 1,000 points</p>
+                <p>• <strong>Total per question:</strong> Up to 5,000 points</p>
+                <p className="italic text-gray-600 mt-2">The closer your guess, the more points you earn!</p>
+              </div>
             </div>
           </div>
         </div>
       </motion.div>
     </motion.div>
   );
+};
+
+// Exponential decay scoring function
+const calculatePoints = (difference: number, maxPoints: number, scaleFactor: number = 2): number => {
+  return Math.round(maxPoints * Math.exp(-difference * scaleFactor));
 };
 
 export default function Home() {
@@ -129,13 +142,19 @@ export default function Home() {
   const [showExplanation, setShowExplanation] = useState(false);
   const [loading, setLoading] = useState(true);
   const [usedGoods, setUsedGoods] = useState<Set<string>>(new Set());
-  const [stats, setStats] = useState<QuizStats>({
-    score: 0,
-    totalQuestions: 0,
-    streak: 0,
-    bestStreak: 0,
-    recentGuesses: []
+  const [sessionStats, setSessionStats] = useState<SessionStats>({
+    totalPoints: 0,
+    questionsCompleted: 0,
+    questionResults: []
   });
+  const [currentQuestionPoints, setCurrentQuestionPoints] = useState({
+    demand: 0,
+    supply: 0,
+    taxIncidence: 0,
+    total: 0
+  });
+
+  const SESSION_LENGTH = 10;
 
   useEffect(() => {
     fetch('/dataset.json')
@@ -182,41 +201,59 @@ export default function Home() {
     const demandActual = currentGood!.demandElasticity;
     const supplyActual = currentGood!.supplyElasticity;
     
-    // Calculate tax incidence
-    const taxIncidence = supplyActual / (Math.abs(demandActual) + supplyActual);
-    
+    // Calculate points for each component
     const demandDiff = Math.abs(demandGuessNum - demandActual);
     const supplyDiff = Math.abs(supplyGuessNum - supplyActual);
     
-    setStats(prev => {
-      const newTotalQuestions = prev.totalQuestions + 1;
-      const isCorrect = demandDiff <= 0.1 && supplyDiff <= 0.1;
-      const newScore = isCorrect ? prev.score + 1 : prev.score;
-      const newStreak = isCorrect ? prev.streak + 1 : 0;
-      const newBestStreak = Math.max(newStreak, prev.bestStreak);
-      
-      const newRecentGuesses = [
-        { 
-          demandGuess: demandGuessNum, 
-          demandActual, 
-          supplyGuess: supplyGuessNum,
-          supplyActual,
-          taxIncidence
-        },
-        ...prev.recentGuesses.slice(0, 4)
-      ];
-      
-      return {
-        score: newScore,
-        totalQuestions: newTotalQuestions,
-        streak: newStreak,
-        bestStreak: newBestStreak,
-        recentGuesses: newRecentGuesses
-      };
+    const demandPoints = calculatePoints(demandDiff, 2000);
+    const supplyPoints = calculatePoints(supplyDiff, 2000);
+    
+    // Calculate tax incidence
+    const actualTaxIncidence = supplyActual / (Math.abs(demandActual) + supplyActual);
+    const guessTaxIncidence = supplyGuessNum / (Math.abs(demandGuessNum) + supplyGuessNum);
+    const taxIncidenceDiff = Math.abs(guessTaxIncidence - actualTaxIncidence);
+    
+    // Tax incidence points (scale factor of 10 because differences are smaller)
+    const taxIncidencePoints = calculatePoints(taxIncidenceDiff, 1000, 10);
+    
+    const totalPoints = demandPoints + supplyPoints + taxIncidencePoints;
+    
+    setCurrentQuestionPoints({
+      demand: demandPoints,
+      supply: supplyPoints,
+      taxIncidence: taxIncidencePoints,
+      total: totalPoints
     });
+    
+    // Update session stats
+    const questionResult: QuestionResult = {
+      questionNumber: sessionStats.questionsCompleted + 1,
+      good: currentGood!.good,
+      demandPoints,
+      supplyPoints,
+      taxIncidencePoints,
+      totalPoints,
+      demandGuess: demandGuessNum,
+      demandActual,
+      supplyGuess: supplyGuessNum,
+      supplyActual,
+      taxIncidenceGuess: guessTaxIncidence,
+      taxIncidenceActual: actualTaxIncidence
+    };
+    
+    setSessionStats(prev => ({
+      totalPoints: prev.totalPoints + totalPoints,
+      questionsCompleted: prev.questionsCompleted + 1,
+      questionResults: [...prev.questionResults, questionResult]
+    }));
   };
 
   const nextQuestion = () => {
+    if (sessionStats.questionsCompleted >= SESSION_LENGTH) {
+      setCurrentStage('sessionComplete');
+      return;
+    }
+    
     if (currentGood) {
       setUsedGoods(prev => new Set([...prev, currentGood.good]));
     }
@@ -226,29 +263,17 @@ export default function Home() {
     selectRandomGood(goods, usedGoods);
   };
 
-  const getAccuracyInfo = (guess: number, actual: number) => {
-    const difference = Math.abs(guess - actual);
-    
-    if (difference <= 0.1) return { 
-      color: 'from-green-500 to-emerald-500', 
-      message: 'Excellent!', 
-      emoji: '🎯' 
-    };
-    if (difference <= 0.3) return { 
-      color: 'from-yellow-500 to-amber-500', 
-      message: 'Very close!', 
-      emoji: '⭐' 
-    };
-    if (difference <= 0.5) return { 
-      color: 'from-orange-500 to-orange-600', 
-      message: 'Good try!', 
-      emoji: '👍' 
-    };
-    return { 
-      color: 'from-red-500 to-rose-500', 
-      message: 'Keep practicing!', 
-      emoji: '💪' 
-    };
+  const startNewSession = () => {
+    setSessionStats({
+      totalPoints: 0,
+      questionsCompleted: 0,
+      questionResults: []
+    });
+    setUsedGoods(new Set());
+    setCurrentStage('demand');
+    setDemandGuess('');
+    setSupplyGuess('');
+    selectRandomGood(goods, new Set());
   };
 
   if (loading) {
@@ -270,8 +295,6 @@ export default function Home() {
     );
   }
 
-  const demandAccuracy = currentStage === 'result' ? getAccuracyInfo(parseFloat(demandGuess), currentGood!.demandElasticity) : null;
-  const supplyAccuracy = currentStage === 'result' ? getAccuracyInfo(parseFloat(supplyGuess), currentGood!.supplyElasticity) : null;
   const taxIncidence = currentStage === 'result' ? 
     currentGood!.supplyElasticity / (Math.abs(currentGood!.demandElasticity) + currentGood!.supplyElasticity) : 0;
 
@@ -308,379 +331,450 @@ export default function Home() {
             </button>
           </motion.div>
 
-          {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-3 gap-6">
-            {/* Stats Panel */}
+          {/* Session Complete Screen */}
+          {currentStage === 'sessionComplete' ? (
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="lg:col-span-1 space-y-4"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="max-w-4xl mx-auto"
             >
-              {/* Score Cards */}
-              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/10">
-                <h3 className="text-white/80 font-semibold mb-4 text-center">Your Progress</h3>
-                <div className="space-y-3">
-                  <div className="bg-gradient-to-r from-blue-600/20 to-blue-500/20 rounded-2xl p-4 border border-blue-400/20">
-                    <p className="text-blue-300 text-sm">Score</p>
-                    <p className="text-3xl font-bold text-white">{stats.score}/{stats.totalQuestions}</p>
-                  </div>
-                  <div className="bg-gradient-to-r from-green-600/20 to-green-500/20 rounded-2xl p-4 border border-green-400/20">
-                    <p className="text-green-300 text-sm">Accuracy</p>
-                    <p className="text-3xl font-bold text-white">
-                      {stats.totalQuestions > 0 ? Math.round((stats.score / stats.totalQuestions) * 100) : 0}%
-                    </p>
-                  </div>
-                  <div className="bg-gradient-to-r from-purple-600/20 to-purple-500/20 rounded-2xl p-4 border border-purple-400/20">
-                    <p className="text-purple-300 text-sm">Current Streak</p>
-                    <p className="text-3xl font-bold text-white">{stats.streak} 🔥</p>
-                  </div>
-                  <div className="bg-gradient-to-r from-pink-600/20 to-pink-500/20 rounded-2xl p-4 border border-pink-400/20">
-                    <p className="text-pink-300 text-sm">Best Streak</p>
-                    <p className="text-3xl font-bold text-white">{stats.bestStreak} ⭐</p>
-                  </div>
+              <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/10">
+                <h2 className="text-4xl font-bold text-white text-center mb-8">
+                  Session Complete! 🎉
+                </h2>
+                
+                <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 mb-8 text-center">
+                  <p className="text-white/80 text-xl mb-2">Total Score</p>
+                  <p className="text-6xl font-bold text-white">
+                    {sessionStats.totalPoints.toLocaleString()}
+                  </p>
+                  <p className="text-white/80 text-lg mt-2">
+                    out of {(SESSION_LENGTH * 5000).toLocaleString()} possible points
+                  </p>
+                  <p className="text-2xl text-white mt-4">
+                    {Math.round((sessionStats.totalPoints / (SESSION_LENGTH * 5000)) * 100)}% Accuracy
+                  </p>
                 </div>
+
+                <div className="space-y-4 mb-8 max-h-96 overflow-y-auto">
+                  <h3 className="text-xl font-semibold text-white mb-4">Question Breakdown</h3>
+                  {sessionStats.questionResults.map((result, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="bg-white/5 rounded-xl p-4"
+                    >
+                      <div className="flex justify-between items-start mb-2">
+                        <h4 className="text-white font-semibold">
+                          Q{result.questionNumber}: {result.good}
+                        </h4>
+                        <span className="text-2xl font-bold text-yellow-400">
+                          {result.totalPoints.toLocaleString()} pts
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2 text-sm">
+                        <div className="text-gray-300">
+                          <span className="text-blue-400">Demand:</span> {result.demandPoints} pts
+                        </div>
+                        <div className="text-gray-300">
+                          <span className="text-green-400">Supply:</span> {result.supplyPoints} pts
+                        </div>
+                        <div className="text-gray-300">
+                          <span className="text-orange-400">Tax:</span> {result.taxIncidencePoints} pts
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={startNewSession}
+                  className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold text-lg rounded-2xl hover:from-green-700 hover:to-emerald-700 transition-all duration-300 shadow-lg"
+                >
+                  Start New Session
+                </motion.button>
               </div>
-
-              {/* Recent Guesses */}
-              {stats.recentGuesses.length > 0 && (
+            </motion.div>
+          ) : (
+            /* Main Quiz Content */
+            <div className="grid lg:grid-cols-3 gap-6">
+              {/* Stats Panel */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                className="lg:col-span-1 space-y-4"
+              >
+                {/* Session Progress */}
                 <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/10">
-                  <h3 className="text-white/80 font-semibold mb-4">Recent Attempts</h3>
+                  <h3 className="text-white/80 font-semibold mb-4 text-center">Session Progress</h3>
                   <div className="space-y-3">
-                    {stats.recentGuesses.map((guess, idx) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="text-sm space-y-1"
-                      >
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-400">Demand:</span>
-                          <span className="text-white">
-                            {guess.demandGuess.toFixed(2)} → {guess.demandActual.toFixed(2)}
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-400">Supply:</span>
-                          <span className="text-white">
-                            {guess.supplyGuess.toFixed(2)} → {guess.supplyActual.toFixed(2)}
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-400">Tax on buyer:</span>
-                          <span className="text-yellow-400 font-semibold">
-                            {(guess.taxIncidence * 100).toFixed(1)}%
-                          </span>
-                        </div>
-                        <div className="border-t border-white/10 mt-1"></div>
-                      </motion.div>
-                    ))}
+                    <div className="bg-gradient-to-r from-blue-600/20 to-blue-500/20 rounded-2xl p-4 border border-blue-400/20">
+                      <p className="text-blue-300 text-sm">Question</p>
+                      <p className="text-3xl font-bold text-white">
+                        {sessionStats.questionsCompleted + 1}/{SESSION_LENGTH}
+                      </p>
+                    </div>
+                    <div className="bg-gradient-to-r from-purple-600/20 to-purple-500/20 rounded-2xl p-4 border border-purple-400/20">
+                      <p className="text-purple-300 text-sm">Total Points</p>
+                      <p className="text-3xl font-bold text-white">
+                        {sessionStats.totalPoints.toLocaleString()}
+                      </p>
+                    </div>
+                    <div className="bg-gradient-to-r from-green-600/20 to-green-500/20 rounded-2xl p-4 border border-green-400/20">
+                      <p className="text-green-300 text-sm">Average Score</p>
+                      <p className="text-3xl font-bold text-white">
+                        {sessionStats.questionsCompleted > 0 
+                          ? Math.round(sessionStats.totalPoints / sessionStats.questionsCompleted).toLocaleString()
+                          : '0'}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              )}
-            </motion.div>
 
-            {/* Quiz Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="lg:col-span-2"
-            >
-              {currentGood && (
-                <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/10">
-                  <AnimatePresence mode="wait">
-                    {currentStage === 'demand' && (
-                      <motion.div
-                        key="demand"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                      >
-                        <h2 className="text-2xl font-semibold text-white mb-6">
-                          Step 1: What is the price elasticity of <span className="text-blue-400">demand</span> for:
-                        </h2>
-                        
+                {/* Recent Questions */}
+                {sessionStats.questionResults.length > 0 && (
+                  <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/10">
+                    <h3 className="text-white/80 font-semibold mb-4">Recent Questions</h3>
+                    <div className="space-y-3">
+                      {sessionStats.questionResults.slice(-3).reverse().map((result, idx) => (
                         <motion.div
-                          initial={{ scale: 0.9 }}
-                          animate={{ scale: 1 }}
-                          className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 mb-8 shadow-2xl"
+                          key={idx}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: idx * 0.1 }}
+                          className="bg-white/5 rounded-xl p-3"
                         >
-                          <p className="text-3xl md:text-4xl font-bold text-white text-center">
-                            {currentGood.good}
-                          </p>
-                        </motion.div>
-
-                        <form onSubmit={handleDemandSubmit} className="space-y-6">
-                          <div>
-                            <label className="block text-gray-300 font-medium mb-3">
-                              Enter demand elasticity:
-                            </label>
-                            <input
-                              type="number"
-                              step="0.01"
-                              value={demandGuess}
-                              onChange={(e) => setDemandGuess(e.target.value)}
-                              className="w-full px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white text-xl font-medium placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:bg-white/20 transition-all duration-300"
-                              placeholder="e.g., -0.45"
-                              autoFocus
-                            />
-                            <div className="mt-3 flex items-center justify-between text-sm text-gray-400">
-                              <span>💡 Always negative</span>
-                              <span>Range: 0 to -5</span>
-                            </div>
+                          <div className="flex justify-between items-center mb-1">
+                            <span className="text-sm text-gray-300 truncate mr-2">
+                              {result.good}
+                            </span>
+                            <span className="text-lg font-bold text-yellow-400">
+                              {result.totalPoints}
+                            </span>
                           </div>
+                          <div className="flex justify-between text-xs text-gray-400">
+                            <span>D: {result.demandPoints}</span>
+                            <span>S: {result.supplyPoints}</span>
+                            <span>T: {result.taxIncidencePoints}</span>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </motion.div>
 
-                          <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            type="submit"
-                            disabled={!demandGuess}
-                            className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
-                          >
-                            Next: Supply Elasticity →
-                          </motion.button>
-                        </form>
-                      </motion.div>
-                    )}
-
-                    {currentStage === 'supply' && (
-                      <motion.div
-                        key="supply"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                      >
-                        <h2 className="text-2xl font-semibold text-white mb-6">
-                          Step 2: What is the price elasticity of <span className="text-green-400">supply</span> for:
-                        </h2>
-                        
+              {/* Quiz Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="lg:col-span-2"
+              >
+                {currentGood && (
+                  <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/10">
+                    <AnimatePresence mode="wait">
+                      {currentStage === 'demand' && (
                         <motion.div
-                          initial={{ scale: 0.9 }}
-                          animate={{ scale: 1 }}
-                          className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 mb-8 shadow-2xl"
+                          key="demand"
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -20 }}
                         >
-                          <p className="text-3xl md:text-4xl font-bold text-white text-center">
-                            {currentGood.good}
-                          </p>
-                        </motion.div>
-
-                        <form onSubmit={handleSupplySubmit} className="space-y-6">
-                          <div>
-                            <label className="block text-gray-300 font-medium mb-3">
-                              Enter supply elasticity:
-                            </label>
-                            <input
-                              type="number"
-                              step="0.01"
-                              value={supplyGuess}
-                              onChange={(e) => setSupplyGuess(e.target.value)}
-                              className="w-full px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white text-xl font-medium placeholder-gray-400 focus:outline-none focus:border-green-400 focus:bg-white/20 transition-all duration-300"
-                              placeholder="e.g., 1.2"
-                              autoFocus
-                            />
-                            <div className="mt-3 flex items-center justify-between text-sm text-gray-400">
-                              <span>💡 Always positive</span>
-                              <span>Range: 0 to 5+</span>
-                            </div>
-                          </div>
-
-                          <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            type="submit"
-                            disabled={!supplyGuess}
-                            className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold text-lg rounded-2xl hover:from-green-700 hover:to-emerald-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                          <h2 className="text-2xl font-semibold text-white mb-6">
+                            Step 1: What is the price elasticity of <span className="text-blue-400">demand</span> for:
+                          </h2>
+                          
+                          <motion.div
+                            initial={{ scale: 0.9 }}
+                            animate={{ scale: 1 }}
+                            className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 mb-8 shadow-2xl"
                           >
-                            Submit & See Results
-                          </motion.button>
-                        </form>
-                      </motion.div>
-                    )}
-
-                    {currentStage === 'result' && (
-                      <motion.div
-                        key="result"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="space-y-6"
-                      >
-                        {/* Overall Performance */}
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div className={`bg-gradient-to-r ${demandAccuracy!.color} rounded-2xl p-6 text-center`}>
-                            <p className="text-3xl mb-2">{demandAccuracy!.emoji}</p>
-                            <p className="text-xl font-bold text-white">Demand: {demandAccuracy!.message}</p>
-                          </div>
-                          <div className={`bg-gradient-to-r ${supplyAccuracy!.color} rounded-2xl p-6 text-center`}>
-                            <p className="text-3xl mb-2">{supplyAccuracy!.emoji}</p>
-                            <p className="text-xl font-bold text-white">Supply: {supplyAccuracy!.message}</p>
-                          </div>
-                        </div>
-
-                        {/* Detailed Results */}
-                        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 space-y-4">
-                          <h3 className="text-xl font-bold text-white mb-4">📊 Your Results</h3>
-                          
-                          <div className="grid md:grid-cols-2 gap-4">
-                            <div className="space-y-3">
-                              <h4 className="text-blue-400 font-semibold">Demand Elasticity</h4>
-                              <div className="space-y-2">
-                                <div className="flex justify-between items-center">
-                                  <span className="text-gray-300">Your Guess:</span>
-                                  <span className="text-xl font-bold text-white">
-                                    {parseFloat(demandGuess).toFixed(2)}
-                                  </span>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                  <span className="text-gray-300">Actual:</span>
-                                  <span className="text-xl font-bold text-blue-400">
-                                    {currentGood.demandElasticity.toFixed(2)}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="space-y-3">
-                              <h4 className="text-green-400 font-semibold">Supply Elasticity</h4>
-                              <div className="space-y-2">
-                                <div className="flex justify-between items-center">
-                                  <span className="text-gray-300">Your Guess:</span>
-                                  <span className="text-xl font-bold text-white">
-                                    {parseFloat(supplyGuess).toFixed(2)}
-                                  </span>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                  <span className="text-gray-300">Actual:</span>
-                                  <span className="text-xl font-bold text-green-400">
-                                    {currentGood.supplyElasticity.toFixed(2)}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Tax Incidence Calculation */}
-                        <div className="bg-gradient-to-r from-orange-600/20 to-red-600/20 rounded-2xl p-6 border border-orange-400/20">
-                          <h3 className="text-xl font-bold text-white mb-4">⚖️ Tax Incidence Analysis</h3>
-                          
-                          <div className="bg-white/10 rounded-xl p-4 mb-4">
-                            <p className="text-sm text-gray-300 mb-2">If a tariff or tax is imposed on this good:</p>
-                            <div className="space-y-3">
-                              <div className="flex justify-between items-center">
-                                <span className="text-gray-300">Importers/Buyers pay:</span>
-                                <span className="text-2xl font-bold text-orange-400">
-                                  {(taxIncidence * 100).toFixed(1)}%
-                                </span>
-                              </div>
-                              <div className="flex justify-between items-center">
-                                <span className="text-gray-300">Exporters/Sellers absorb:</span>
-                                <span className="text-2xl font-bold text-red-400">
-                                  {((1 - taxIncidence) * 100).toFixed(1)}%
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="text-sm text-gray-300 space-y-2">
-                            <p>
-                              <strong>Why this split?</strong> The party that's less flexible (lower elasticity) 
-                              bears more of the tax burden.
+                            <p className="text-3xl md:text-4xl font-bold text-white text-center">
+                              {currentGood.good}
                             </p>
-                            {taxIncidence > 0.6 ? (
-                              <p>
-                                In this case, <span className="text-orange-400 font-semibold">buyers are less flexible</span> than 
-                                sellers, so they end up paying most of the tariff through higher prices.
-                              </p>
-                            ) : taxIncidence < 0.4 ? (
-                              <p>
-                                In this case, <span className="text-red-400 font-semibold">sellers are less flexible</span> than 
-                                buyers, so they absorb most of the tariff by accepting lower prices.
-                              </p>
-                            ) : (
-                              <p>
-                                In this case, both parties have similar flexibility, so the tax burden is 
-                                <span className="text-yellow-400 font-semibold"> relatively evenly split</span>.
-                              </p>
-                            )}
-                          </div>
-                        </div>
+                          </motion.div>
 
-                        {/* Market Insights */}
-                        <div className="bg-gradient-to-r from-indigo-600/20 to-purple-600/20 rounded-2xl p-6 border border-indigo-400/20">
-                          <h3 className="text-lg font-bold text-white mb-3">💡 Market Insights</h3>
-                          <div className="space-y-3 text-sm text-gray-300">
-                            {Math.abs(currentGood.demandElasticity) < 0.5 && (
-                              <p>
-                                • <strong className="text-blue-400">Inelastic demand:</strong> Consumers need this product 
-                                and have few alternatives. Price increases won't significantly reduce consumption.
-                              </p>
-                            )}
-                            {Math.abs(currentGood.demandElasticity) >= 1.5 && (
-                              <p>
-                                • <strong className="text-blue-400">Elastic demand:</strong> Consumers are very price-sensitive. 
-                                Small price increases lead to large drops in consumption.
-                              </p>
-                            )}
-                            {currentGood.supplyElasticity < 0.5 && (
-                              <p>
-                                • <strong className="text-green-400">Inelastic supply:</strong> Producers can't easily 
-                                adjust production. It might be due to limited resources or production capacity.
-                              </p>
-                            )}
-                            {currentGood.supplyElasticity >= 1.5 && (
-                              <p>
-                                • <strong className="text-green-400">Elastic supply:</strong> Producers can easily 
-                                increase or decrease production in response to price changes.
-                              </p>
-                            )}
-                          </div>
-                        </div>
+                          <form onSubmit={handleDemandSubmit} className="space-y-6">
+                            <div>
+                              <label className="block text-gray-300 font-medium mb-3">
+                                Enter demand elasticity:
+                              </label>
+                              <input
+                                type="number"
+                                step="0.01"
+                                value={demandGuess}
+                                onChange={(e) => setDemandGuess(e.target.value)}
+                                className="w-full px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white text-xl font-medium placeholder-gray-400 focus:outline-none focus:border-purple-400 focus:bg-white/20 transition-all duration-300"
+                                placeholder="e.g., -0.45"
+                                autoFocus
+                              />
+                              <div className="mt-3 flex items-center justify-between text-sm text-gray-400">
+                                <span>💡 Always negative</span>
+                                <span>Range: 0 to -5</span>
+                              </div>
+                            </div>
 
-                        <motion.button
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          onClick={nextQuestion}
-                          className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-lg rounded-2xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg"
+                            <motion.button
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                              type="submit"
+                              disabled={!demandGuess}
+                              className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                            >
+                              Next: Supply Elasticity →
+                            </motion.button>
+                          </form>
+                        </motion.div>
+                      )}
+
+                      {currentStage === 'supply' && (
+                        <motion.div
+                          key="supply"
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -20 }}
                         >
-                          Next Question →
-                        </motion.button>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              )}
-            </motion.div>
-          </div>
+                          <h2 className="text-2xl font-semibold text-white mb-6">
+                            Step 2: What is the price elasticity of <span className="text-green-400">supply</span> for:
+                          </h2>
+                          
+                          <motion.div
+                            initial={{ scale: 0.9 }}
+                            animate={{ scale: 1 }}
+                            className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 mb-8 shadow-2xl"
+                          >
+                            <p className="text-3xl md:text-4xl font-bold text-white text-center">
+                              {currentGood.good}
+                            </p>
+                          </motion.div>
+
+                          <form onSubmit={handleSupplySubmit} className="space-y-6">
+                            <div>
+                              <label className="block text-gray-300 font-medium mb-3">
+                                Enter supply elasticity:
+                              </label>
+                              <input
+                                type="number"
+                                step="0.01"
+                                value={supplyGuess}
+                                onChange={(e) => setSupplyGuess(e.target.value)}
+                                className="w-full px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white text-xl font-medium placeholder-gray-400 focus:outline-none focus:border-green-400 focus:bg-white/20 transition-all duration-300"
+                                placeholder="e.g., 1.2"
+                                autoFocus
+                              />
+                              <div className="mt-3 flex items-center justify-between text-sm text-gray-400">
+                                <span>💡 Always positive</span>
+                                <span>Range: 0 to 5+</span>
+                              </div>
+                            </div>
+
+                            <motion.button
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                              type="submit"
+                              disabled={!supplyGuess}
+                              className="w-full py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-bold text-lg rounded-2xl hover:from-green-700 hover:to-emerald-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                            >
+                              Submit & See Results
+                            </motion.button>
+                          </form>
+                        </motion.div>
+                      )}
+
+                      {currentStage === 'result' && (
+                        <motion.div
+                          key="result"
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          className="space-y-6"
+                        >
+                          {/* Points Earned */}
+                          <div className="bg-gradient-to-r from-yellow-600 to-orange-600 rounded-2xl p-6 text-center">
+                            <p className="text-white/80 text-lg mb-2">Points Earned</p>
+                            <p className="text-6xl font-bold text-white mb-4">
+                              {currentQuestionPoints.total.toLocaleString()}
+                            </p>
+                            <div className="flex justify-center space-x-6 text-sm">
+                              <div>
+                                <span className="text-white/70">Demand:</span>
+                                <span className="text-white font-bold ml-1">{currentQuestionPoints.demand}</span>
+                              </div>
+                              <div>
+                                <span className="text-white/70">Supply:</span>
+                                <span className="text-white font-bold ml-1">{currentQuestionPoints.supply}</span>
+                              </div>
+                              <div>
+                                <span className="text-white/70">Tax:</span>
+                                <span className="text-white font-bold ml-1">{currentQuestionPoints.taxIncidence}</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Detailed Results */}
+                          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 space-y-4">
+                            <h3 className="text-xl font-bold text-white mb-4">📊 Your Results</h3>
+                            
+                            <div className="grid md:grid-cols-2 gap-4">
+                              <div className="space-y-3">
+                                <h4 className="text-blue-400 font-semibold">Demand Elasticity</h4>
+                                <div className="space-y-2">
+                                  <div className="flex justify-between items-center">
+                                    <span className="text-gray-300">Your Guess:</span>
+                                    <span className="text-xl font-bold text-white">
+                                      {parseFloat(demandGuess).toFixed(2)}
+                                    </span>
+                                  </div>
+                                  <div className="flex justify-between items-center">
+                                    <span className="text-gray-300">Actual:</span>
+                                    <span className="text-xl font-bold text-blue-400">
+                                      {currentGood.demandElasticity.toFixed(2)}
+                                    </span>
+                                  </div>
+                                  <div className="text-right">
+                                    <span className="text-2xl font-bold text-yellow-400">
+                                      +{currentQuestionPoints.demand} pts
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="space-y-3">
+                                <h4 className="text-green-400 font-semibold">Supply Elasticity</h4>
+                                <div className="space-y-2">
+                                  <div className="flex justify-between items-center">
+                                    <span className="text-gray-300">Your Guess:</span>
+                                    <span className="text-xl font-bold text-white">
+                                      {parseFloat(supplyGuess).toFixed(2)}
+                                    </span>
+                                  </div>
+                                  <div className="flex justify-between items-center">
+                                    <span className="text-gray-300">Actual:</span>
+                                    <span className="text-xl font-bold text-green-400">
+                                      {currentGood.supplyElasticity.toFixed(2)}
+                                    </span>
+                                  </div>
+                                  <div className="text-right">
+                                    <span className="text-2xl font-bold text-yellow-400">
+                                      +{currentQuestionPoints.supply} pts
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Tax Incidence Analysis */}
+                          <div className="bg-gradient-to-r from-orange-600/20 to-red-600/20 rounded-2xl p-6 border border-orange-400/20">
+                            <h3 className="text-xl font-bold text-white mb-4">⚖️ Tax Incidence Analysis</h3>
+                            
+                            <div className="bg-white/10 rounded-xl p-4 mb-4">
+                              <p className="text-sm text-gray-300 mb-3">If a tariff or tax is imposed on this good:</p>
+                              
+                              <div className="grid md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                  <p className="text-gray-400 text-sm mb-1">Based on your guesses:</p>
+                                  <div className="space-y-1">
+                                    <div className="flex justify-between">
+                                      <span className="text-gray-300">Buyers pay:</span>
+                                      <span className="text-lg font-bold text-orange-400">
+                                        {(parseFloat(supplyGuess) / (Math.abs(parseFloat(demandGuess)) + parseFloat(supplyGuess)) * 100).toFixed(1)}%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                                
+                                <div>
+                                  <p className="text-gray-400 text-sm mb-1">Actual incidence:</p>
+                                  <div className="space-y-1">
+                                    <div className="flex justify-between">
+                                      <span className="text-gray-300">Buyers pay:</span>
+                                      <span className="text-lg font-bold text-orange-400">
+                                        {(taxIncidence * 100).toFixed(1)}%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              <div className="text-center pt-3 border-t border-white/10">
+                                <span className="text-2xl font-bold text-yellow-400">
+                                  +{currentQuestionPoints.taxIncidence} pts
+                                </span>
+                                <p className="text-sm text-gray-400 mt-1">for tax incidence accuracy</p>
+                              </div>
+                            </div>
+
+                            <div className="text-sm text-gray-300">
+                              {taxIncidence > 0.6 ? (
+                                <p>
+                                  Buyers are less flexible than sellers, so they bear most of the tax burden.
+                                </p>
+                              ) : taxIncidence < 0.4 ? (
+                                <p>
+                                  Sellers are less flexible than buyers, so they absorb most of the tax burden.
+                                </p>
+                              ) : (
+                                <p>
+                                  Both parties have similar flexibility, so the tax burden is relatively evenly split.
+                                </p>
+                              )}
+                            </div>
+                          </div>
+
+                          <motion.button
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={nextQuestion}
+                            className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-lg rounded-2xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg"
+                          >
+                            {sessionStats.questionsCompleted < SESSION_LENGTH - 1 
+                              ? `Next Question (${sessionStats.questionsCompleted + 2}/${SESSION_LENGTH})` 
+                              : 'Complete Session'}
+                          </motion.button>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                )}
+              </motion.div>
+            </div>
+          )}
 
           {/* Tips Section */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="mt-8 bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10"
-          >
-            <h3 className="text-white font-semibold mb-3">Quick Tips:</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-gray-300">
-              <div className="flex items-start space-x-2">
-                <span className="text-blue-400">📉</span>
-                <p>Demand: Necessities are inelastic (-0.1 to -0.5)</p>
+          {currentStage !== 'sessionComplete' && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="mt-8 bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10"
+            >
+              <h3 className="text-white font-semibold mb-3">Quick Tips:</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-gray-300">
+                <div className="flex items-start space-x-2">
+                  <span className="text-blue-400">📉</span>
+                  <p>Demand: Necessities are inelastic (-0.1 to -0.5)</p>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <span className="text-purple-400">💎</span>
+                  <p>Demand: Luxuries are elastic (-1.5 to -5)</p>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <span className="text-green-400">🏭</span>
+                  <p>Supply: Fixed capacity → inelastic (0 to 0.5)</p>
+                </div>
+                <div className="flex items-start space-x-2">
+                  <span className="text-orange-400">⚖️</span>
+                  <p>Tax incidence gives bonus points!</p>
+                </div>
               </div>
-              <div className="flex items-start space-x-2">
-                <span className="text-purple-400">💎</span>
-                <p>Demand: Luxuries are elastic (-1.5 to -5)</p>
-              </div>
-              <div className="flex items-start space-x-2">
-                <span className="text-green-400">🏭</span>
-                <p>Supply: Fixed capacity → inelastic (0 to 0.5)</p>
-              </div>
-              <div className="flex items-start space-x-2">
-                <span className="text-orange-400">⚖️</span>
-                <p>Less flexible party pays more tax</p>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
         </div>
       </div>
 
